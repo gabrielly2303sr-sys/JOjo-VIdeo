@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix - JoJo's Bizarre Adventure</title>
+    <title>Netflix - Jujutsu Kaisen</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700;900&family=Cormorant+Garamond:wght@400;500;600&display=swap');
 
@@ -52,7 +52,7 @@
         .nav-links li { font-size: 0.85rem; color: #d2d2d2; cursor: pointer; transition: 0.2s; }
         .nav-links li:hover, .nav-links li.active { color: white; font-weight: 700; }
 
-        /* ---------- HERO ---------- */
+        /* ---------- HERO (Jujutsu Kaisen) ---------- */
         .hero {
             height: 92vh;
             min-height: 620px;
@@ -62,28 +62,29 @@
             padding: 0 4%;
             overflow: hidden;
             background:
-                radial-gradient(ellipse 900px 700px at 78% 30%, rgba(120,40,150,0.55), transparent 60%),
-                radial-gradient(ellipse 700px 900px at 95% 75%, rgba(212,168,60,0.18), transparent 55%),
-                linear-gradient(160deg, #0c0410 0%, #1a0a24 35%, #150a1e 65%, #0c0710 100%);
+                /* Aura Azul (Gojo) e Aura Vermelha (Sukuna) */
+                radial-gradient(ellipse 900px 800px at 20% 30%, rgba(20, 80, 220, 0.4), transparent 60%),
+                radial-gradient(ellipse 800px 900px at 85% 65%, rgba(220, 20, 40, 0.45), transparent 60%),
+                linear-gradient(160deg, #07070a 0%, #0d0608 35%, #05040a 65%, #000000 100%);
         }
 
-        /* decoração artística (rosas/ornamentos desenhados em SVG, sem usar arte de terceiros) */
         .hero-art {
             position: absolute;
-            right: -4%;
+            right: -5%;
             top: 0;
             height: 100%;
-            width: 55%;
-            opacity: 0.9;
+            width: 60%;
+            opacity: 0.8;
             pointer-events: none;
         }
+        
         .hero-vignette {
             position: absolute; inset: 0;
-            background: linear-gradient(to right, rgba(12,4,16,1) 0%, rgba(12,4,16,0.75) 32%, transparent 62%),
+            background: linear-gradient(to right, rgba(7,7,10,1) 0%, rgba(7,7,10,0.7) 38%, transparent 68%),
                         linear-gradient(to top, var(--bg-color) 0%, transparent 28%);
         }
 
-        .hero-content { position: relative; z-index: 10; max-width: 640px; margin-top: 40px; }
+        .hero-content { position: relative; z-index: 10; max-width: 650px; margin-top: 40px; }
 
         .n-badge-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
         .n-icon {
@@ -95,16 +96,25 @@
         .n-badge-row span { font-size: 0.78rem; letter-spacing: 3px; color: #d2d2d2; font-weight: 600; }
 
         .series-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5.4rem;
-            font-weight: 600;
-            letter-spacing: 10px;
-            margin: 0 0 18px 0;
-            line-height: 1;
-            color: #f3f0ea;
-            text-shadow: 0 0 30px rgba(180,110,220,0.35), 0 4px 18px rgba(0,0,0,0.6);
+            font-family: 'Inter', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin: 0 0 5px 0;
+            line-height: 1.1;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-shadow: 0 0 40px rgba(220, 20, 40, 0.4), 0 4px 18px rgba(0,0,0,0.8);
         }
-        .series-title .accent { color: #d4a83c; }
+        .season-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: #ff3333;
+            margin: 0 0 18px 0;
+            text-transform: uppercase;
+        }
 
         .top-10 { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
         .top-10-badge {
@@ -117,12 +127,12 @@
         .top-10-text { font-size: 1.05rem; font-weight: 700; color: #f2f2f2; }
 
         .synopsis {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.5;
             color: #e5e5e5;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
             margin-bottom: 28px;
-            max-width: 540px;
+            max-width: 580px;
         }
 
         .buttons { display: flex; gap: 14px; }
@@ -135,7 +145,7 @@
         .btn-info { background-color: rgba(109,109,110,0.6); color: white; }
         .btn-info:hover { background-color: rgba(109,109,110,0.4); }
 
-        /* ---------- POPULAR ROW (estilo homepage real) ---------- */
+        /* ---------- POPULAR ROW ---------- */
         .popular-section { position: relative; z-index: 20; margin-top: -70px; padding: 0 4% 20px; }
         .section-title { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
 
@@ -168,13 +178,13 @@
         .p3{background:linear-gradient(150deg,#123018,#050f08);}
         .p4{background:linear-gradient(150deg,#332608,#110c02);}
         .p5{background:linear-gradient(150deg,#2b0d3a,#100416);}
-        .jojo-poster{
+        .jjk-poster{
             background:
-              radial-gradient(circle at 30% 20%, #7c3aed 0%, #2e1065 45%, #120524 80%),
-              linear-gradient(120deg,#d4a83c 0%, transparent 45%);
+              radial-gradient(circle at 30% 20%, #184ea6 0%, #0d2a59 45%, #051024 80%),
+              linear-gradient(120deg,#ff3333 0%, transparent 45%);
         }
 
-        /* ---------- Seção de episódio único (JoJolion) ---------- */
+        /* ---------- Seção de episódio único ---------- */
         .episodes-section { padding: 30px 4% 10px; position: relative; z-index: 20; }
         .episode-card {
             display: flex; background: #1c1c1c; border-radius: 6px; overflow: hidden; max-width: 900px;
@@ -183,7 +193,7 @@
         .episode-card:hover { background: #292929; }
         .ep-number { font-size: 1.5rem; color: var(--gray-text); font-weight: 700; width: 50px; text-align: center; }
         .ep-thumb-container { position: relative; width: 160px; min-width: 160px; height: 90px; border-radius: 4px; overflow: hidden; }
-        .ep-thumb { width: 100%; height: 100%; background: radial-gradient(circle at 35% 30%, #7c3aed, #1c0a33 75%); }
+        .ep-thumb { width: 100%; height: 100%; background: radial-gradient(circle at 75% 50%, #e62222, #1f0836 75%); }
         .play-icon-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4);
             display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s;
@@ -195,28 +205,6 @@
         .ep-title { font-size: 1.1rem; font-weight: 700; margin: 0; }
         .ep-duration { font-size: 0.9rem; color: var(--gray-text); }
         .ep-desc { font-size: 0.9rem; color: var(--gray-text); line-height: 1.4; margin: 0; }
-
-        /* ---------- Steel Ball Run ---------- */
-        .sbr-section { padding: 30px 4% 10px; position: relative; z-index: 20; }
-        .sbr-row { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 20px; scroll-behavior: smooth; }
-        .sbr-card {
-            position: relative; flex: 0 0 auto; width: 210px; height: 120px;
-            border-radius: 4px; overflow: hidden; cursor: default;
-            display: flex; align-items: flex-end; transition: transform 0.2s ease; filter: saturate(0.7);
-        }
-        .sbr-card.playable { cursor: pointer; filter: none; border: 2px solid var(--netflix-red); }
-        .sbr-card:hover { transform: scale(1.06); }
-        .sbr-card .num-badge { position: absolute; top: 6px; left: 8px; font-size: 11px; font-weight: 700; background: rgba(0,0,0,0.55); padding: 2px 7px; border-radius: 3px; }
-        .sbr-card .lbl { position: relative; padding: 8px; font-size: 12px; font-weight: 700; width: 100%; text-shadow: 0 1px 4px rgba(0,0,0,.8); }
-        .sbr-card .soon-tag { position: absolute; bottom: 6px; left: 8px; font-size: 9.5px; color: #ddd; background: rgba(0,0,0,.5); padding: 1px 6px; border-radius: 2px; }
-        .sbr-card .play-icon-overlay { opacity: 0; }
-        .sbr-card.playable:hover .play-icon-overlay { opacity: 1; }
-        .g1{background:linear-gradient(135deg,#1f2b45,#0c1120);}
-        .g2{background:linear-gradient(135deg,#3a0d0d,#160404);}
-        .g3{background:linear-gradient(135deg,#0d3a2e,#04160f);}
-        .g4{background:linear-gradient(135deg,#3a2b0d,#160f04);}
-        .g5{background:linear-gradient(135deg,#2b0d3a,#100416);}
-        .g6{background:linear-gradient(135deg,#0d243a,#040d16);}
 
         /* ================= PLAYER ================= */
         .video-modal {
@@ -279,12 +267,12 @@
         .player-ep-list.open { transform: translateX(0); }
         .player-ep-list h4 { margin: 0 0 16px; font-size: 1.1rem; }
         .player-ep-row { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #333; cursor: pointer; }
-        .player-ep-row .mini-thumb { width: 100px; height: 56px; object-fit: cover; border-radius: 3px; background: linear-gradient(135deg,#6d28d9,#2e1065); }
+        .player-ep-row .mini-thumb { width: 100px; height: 56px; object-fit: cover; border-radius: 3px; background: linear-gradient(135deg,#e62222,#1f0836); }
         .player-ep-row .t { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
         .player-ep-row .d { font-size: 0.72rem; color: var(--gray-text); }
 
         @media (max-width: 760px) {
-            .series-title { font-size: 3rem; letter-spacing: 6px; }
+            .series-title { font-size: 3rem; }
             .nav-links li:nth-child(n+4) { display: none; }
         }
     </style>
@@ -299,84 +287,76 @@
             <li>Filmes</li>
             <li>Novidades populares</li>
             <li>Minha lista</li>
-            <li>Buscar por idioma</li>
         </ul>
     </header>
 
     <section class="hero">
-        <!-- decoração artística original (rosas/ornamentos em SVG), sem usar imagens de terceiros -->
+        <!-- Arte SVG representando a colisão dos domínios (Gojo x Sukuna) -->
         <svg class="hero-art" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
             <defs>
-                <radialGradient id="glow" cx="50%" cy="35%" r="60%">
-                    <stop offset="0%" stop-color="#c98bff" stop-opacity="0.35"/>
-                    <stop offset="100%" stop-color="#c98bff" stop-opacity="0"/>
+                <radialGradient id="glowBlue" cx="30%" cy="40%" r="50%">
+                    <stop offset="0%" stop-color="#184ea6" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="#184ea6" stop-opacity="0"/>
                 </radialGradient>
-                <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#f0d27a"/>
-                    <stop offset="100%" stop-color="#8a6a1e"/>
-                </linearGradient>
+                <radialGradient id="glowRed" cx="70%" cy="60%" r="50%">
+                    <stop offset="0%" stop-color="#e62222" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="#e62222" stop-opacity="0"/>
+                </radialGradient>
             </defs>
-            <circle cx="330" cy="260" r="260" fill="url(#glow)"/>
-            <!-- silhueta abstrata em pose dramática -->
-            <path d="M300 120 C280 160 260 190 265 240 C240 260 220 300 235 350 C210 380 205 430 230 470 C215 520 225 580 260 630 C270 680 300 720 340 740 C330 690 335 640 355 600 C380 610 405 590 415 555 C440 545 455 515 445 480 C465 460 470 425 450 400 C455 365 440 335 410 320 C405 285 380 260 345 255 C350 210 335 165 300 120 Z"
-                  fill="#170a22" stroke="url(#gold)" stroke-width="1.5" opacity="0.85"/>
-            <!-- galhos de rosa estilizados -->
-            <g stroke="url(#gold)" stroke-width="2" fill="none" opacity="0.55">
-                <path d="M60 700 C120 650 150 600 140 540 C170 520 190 480 175 440"/>
-                <path d="M120 560 C90 540 70 510 80 480"/>
-                <path d="M150 500 C180 490 200 465 190 440"/>
+            <circle cx="200" cy="300" r="350" fill="url(#glowBlue)"/>
+            <circle cx="450" cy="500" r="350" fill="url(#glowRed)"/>
+            
+            <!-- Cortes do Sukuna (Dismantle/Cleave) -->
+            <g stroke="#ff3333" stroke-width="3" opacity="0.8" style="transform: rotate(15deg); transform-origin: center;">
+                <path d="M 300 150 L 550 450"/>
+                <path d="M 350 100 L 600 400"/>
+                <path d="M 250 200 L 500 500"/>
             </g>
-            <g opacity="0.7">
-                <circle cx="82" cy="480" r="14" fill="none" stroke="url(#gold)" stroke-width="1.5"/>
-                <circle cx="188" cy="440" r="10" fill="none" stroke="url(#gold)" stroke-width="1.5"/>
-                <circle cx="140" cy="540" r="12" fill="none" stroke="url(#gold)" stroke-width="1.5"/>
-            </g>
-            <g fill="#f0d27a" opacity="0.6">
-                <circle cx="500" cy="120" r="2"/>
-                <circle cx="470" cy="180" r="1.5"/>
-                <circle cx="530" cy="220" r="2"/>
-                <circle cx="90" cy="150" r="1.5"/>
-                <circle cx="130" cy="90" r="2"/>
-            </g>
+
+            <!-- Vazio Imensurável / Infinito do Gojo -->
+            <circle cx="180" cy="280" r="45" fill="none" stroke="#66a3ff" stroke-width="4" opacity="0.8"/>
+            <circle cx="180" cy="280" r="20" fill="#ffffff" opacity="0.9" filter="blur(2px)"/>
         </svg>
         <div class="hero-vignette"></div>
 
         <div class="hero-content">
             <div class="n-badge-row">
                 <div class="n-icon">N</div>
-                <span>SÉRIE</span>
+                <span>ANIME</span>
             </div>
-            <h1 class="series-title">JOJ<span class="accent">O</span>LI<span class="accent">O</span>N</h1>
+            <h1 class="series-title">JUJUTSU KAISEN</h1>
+            <h2 class="season-subtitle">Temporada 4</h2>
             <div class="top-10">
                 <div class="top-10-badge"><span>TOP</span><span>10</span></div>
-                <span class="top-10-text">#1 em séries hoje</span>
+                <span class="top-10-text">#1 em animes hoje</span>
             </div>
             <p class="synopsis">
-                Na cidade de Morioh, assolada pelo terremoto de 2011, a jovem Yasuho Hirose encontra um rapaz sem memórias enterrado no solo. Com uma estranha marca de nascença e segredos bizarros, ele precisa descobrir quem realmente é.
+                A batalha mais aguardada de todos os tempos. Satoru Gojo, o feiticeiro mais forte da era atual, finalmente enfrenta Ryomen Sukuna, o Rei das Maldições. O destino de todo o mundo jujutsu será decidido neste épico e brutal confronto em Shinjuku.
             </p>
             <div class="buttons">
-                <button class="btn btn-play" onclick="openPlayer('youtube', 'S1:E1 &quot;Bem-vindo a Morioh&quot;')">
+                <!-- Disparando o player local que aponta para o streamable -->
+                <button class="btn btn-play" onclick="openPlayer('local', 'S4:E1 &quot;A Batalha do Mais Forte&quot;')">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="black"><path d="M8 5v14l11-7z"/></svg>
-                    Play
+                    Assistir
                 </button>
                 <button class="btn btn-info">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                    More Info
+                    Mais Informações
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Fileira "Popular na Netflix" estilo homepage real -->
+    <!-- Fileira "Popular na Netflix" -->
     <section class="popular-section">
-        <h2 class="section-title">Popular na Netflix</h2>
+        <h2 class="section-title">Em Alta</h2>
         <div class="poster-row">
-            <div class="poster-card jojo-poster" onclick="openPlayer('youtube', 'S1:E1 &quot;Bem-vindo a Morioh&quot;')">
+            <div class="poster-card jjk-poster" onclick="openPlayer('local', 'S4:E1 &quot;A Batalha do Mais Forte&quot;')">
                 <div class="poster-n">N</div>
-                <span class="poster-tag">NOVOS EPISÓDIOS</span>
-                <div class="poster-title">JoJo's Bizarre Adventure</div>
+                <span class="poster-tag">NOVA TEMPORADA</span>
+                <div class="poster-title">Jujutsu Kaisen</div>
             </div>
-            <div class="poster-card p1"><div class="poster-n">N</div><div class="poster-title">Ronin Twilight</div></div>
+            <div class="poster-card p1"><div class="poster-n">N</div><div class="poster-title">JoJo's Bizarre Adventure</div></div>
             <div class="poster-card p2"><div class="poster-n">N</div><div class="poster-title">Distrito Cassiopeia</div></div>
             <div class="poster-card p3"><div class="poster-n">N</div><div class="poster-title">Neon Static</div></div>
             <div class="poster-card p4"><div class="poster-n">N</div><div class="poster-title">Iron Bloom</div></div>
@@ -385,8 +365,8 @@
     </section>
 
     <section class="episodes-section">
-        <h2 class="section-title">Episódios — JoJolion</h2>
-        <div class="episode-card" onclick="openPlayer('youtube', 'S1:E1 &quot;Bem-vindo a Morioh&quot;')">
+        <h2 class="section-title">Episódios — Shinjuku Showdown</h2>
+        <div class="episode-card" onclick="openPlayer('local', 'S4:E1 &quot;A Batalha do Mais Forte&quot;')">
             <div class="ep-number">1</div>
             <div class="ep-thumb-container">
                 <div class="ep-thumb"></div>
@@ -396,17 +376,12 @@
             </div>
             <div class="ep-info">
                 <div class="ep-header">
-                    <h3 class="ep-title">Bem-vindo a Morioh</h3>
-                    <span class="ep-duration">4 min</span>
+                    <h3 class="ep-title">A Batalha do Mais Forte</h3>
+                    <span class="ep-duration">24 min</span>
                 </div>
-                <p class="ep-desc">Após um misterioso tremor de terra criar as "Paredes Oculares", a estudante Yasuho descobre um jovem nu enterrado. Um estranho encontro que dará início a uma bizarra jornada em busca de sua identidade.</p>
+                <p class="ep-desc">No dia 24 de dezembro, Satoru Gojo finalmente fica frente a frente com Ryomen Sukuna em Shinjuku. Os dois titãs trocam os primeiros golpes, demonstrando níveis absurdos de poder que deixam todos os feiticeiros observando em choque.</p>
             </div>
         </div>
-    </section>
-
-    <section class="sbr-section">
-        <h2 class="section-title">JoJo's Bizarre Adventure: Steel Ball Run</h2>
-        <div class="sbr-row" id="sbrRow"></div>
     </section>
 
     <!-- Player -->
@@ -414,7 +389,8 @@
         <div class="player-container" id="playerContainer">
 
             <div id="ytPlayerDiv"></div>
-            <video id="videoEl" src="episode1.mp4" playsinline style="display:none;"></video>
+            <!-- Video SRC atualizado com o link Streamable pedido -->
+            <video id="videoEl" src="https://streamable.com/pozb8p" playsinline style="display:none;"></video>
 
             <div class="player-ep-list" id="playerEpList">
                 <h4>Episódios</h4>
@@ -435,7 +411,7 @@
 
                 <div class="controls-top">
                     <button class="back-btn" onclick="event.stopPropagation(); closePlayer();">&#8592;</button>
-                    <div class="ep-title-display" id="epTitleDisplay">S1:E1 "Bem-vindo a Morioh"</div>
+                    <div class="ep-title-display" id="epTitleDisplay">S4:E1 "A Batalha do Mais Forte"</div>
                     <div class="top-spacer"></div>
                 </div>
 
@@ -489,31 +465,16 @@
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // ------- catálogo falso Steel Ball Run (24 episódios) -------
-        const sbrRow = document.getElementById('sbrRow');
-        const grads = ['g1','g2','g3','g4','g5','g6'];
-        const TOTAL_EPISODES = 24;
-        for (let i = 1; i <= TOTAL_EPISODES; i++) {
-            const isLast = i === TOTAL_EPISODES;
-            const card = document.createElement('div');
-            card.className = 'sbr-card ' + grads[i % grads.length] + (isLast ? ' playable' : '');
-            card.innerHTML = `
-                <span class="num-badge">EP ${i}</span>
-                ${isLast ? `<div class="play-icon-overlay" style="opacity:0;">
-                    <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="1"/><path d="M10 8v8l6-4z" fill="white"/></svg>
-                </div>` : ''}
-                <div class="lbl">${isLast ? 'Explosão Final — Disponível' : 'Capítulo ' + i}</div>
-                ${isLast ? '' : '<span class="soon-tag">Em breve</span>'}
-            `;
-            if (isLast) card.onclick = () => openPlayer('local', 'S1:E24 "Explosão Final"');
-            sbrRow.appendChild(card);
-        }
+        // Configuração de tempos solicitados:
+        // Abertura termina em 1:34 (94 segundos)
+        const INTRO_END = 94; 
+        
+        // Encerramento inicia em 8:26 (506 segundos)
+        const ENDING_START = 506; 
 
-        // ------- player unificado: YouTube (JoJolion) + vídeo local (SBR) -------
-        const VIDEO_ID = 'g7TcFvORooU';
         let ytPlayer = null;
         let playerReady = false;
-        let currentType = 'youtube'; // 'youtube' | 'local'
+        let currentType = 'local'; 
         let isLocked = false;
         let hideTimer = null;
 
@@ -532,16 +493,6 @@
 
         const ICON_PLAY = '<path d="M8 5v14l11-7z"/>';
         const ICON_PAUSE = '<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>';
-        const INTRO_END = 105;    // 1:45 — fim da abertura (apenas SBR/local)
-        const ENDING_START = 265; // 4:25 — início do encerramento (apenas SBR/local)
-
-        function onYouTubeIframeAPIReady() {
-            ytPlayer = new YT.Player('ytPlayerDiv', {
-                videoId: VIDEO_ID,
-                playerVars: { autoplay: 0, controls: 0, disablekb: 1, modestbranding: 1, rel: 0, iv_load_policy: 3, fs: 0, playsinline: 1 },
-                events: { onReady: () => { playerReady = true; } }
-            });
-        }
 
         function openPlayer(type, title) {
             currentType = type;
@@ -559,11 +510,10 @@
                 videoEl.pause();
                 const start = () => { ytPlayer.seekTo(0); ytPlayer.playVideo(); };
                 if (playerReady) start();
-                else { const w = setInterval(() => { if (playerReady) { clearInterval(w); start(); } }, 200); }
             } else {
-                if (playerReady) ytPlayer.pauseVideo();
+                if (playerReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') ytPlayer.pauseVideo();
                 videoEl.currentTime = 0;
-                videoEl.play();
+                videoEl.play().catch(e => console.log('Autoplay preventido. É necessário interação do usuário.'));
             }
             scheduleAutoHide();
         }
@@ -572,7 +522,7 @@
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
             clearTimeout(hideTimer);
-            if (playerReady) ytPlayer.pauseVideo();
+            if (playerReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') ytPlayer.pauseVideo();
             videoEl.pause();
             closeEpisodeList();
         }
@@ -621,10 +571,11 @@
             return m + ':' + String(s).padStart(2, '0');
         }
 
-        // loop único de atualização (funciona pros dois tipos de player)
+        // Loop de verificação de botões (Pular Abertura/Encerramento)
         setInterval(() => {
             if (modal.style.display !== 'flex') return;
             let cur = 0, dur = 0, playing = false;
+            
             if (currentType === 'youtube' && playerReady) {
                 cur = ytPlayer.getCurrentTime() || 0;
                 dur = ytPlayer.getDuration() || 0;
@@ -634,15 +585,20 @@
                 dur = videoEl.duration || 0;
                 playing = !videoEl.paused;
             }
+            
             playPauseIcon.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+            
             if (dur > 0) {
                 const pct = (cur / dur) * 100;
                 progressFill.style.width = pct + '%';
                 progressDot.style.left = pct + '%';
                 timeRemaining.textContent = formatTime(dur - cur);
             }
+            
             if (currentType === 'local') {
+                // Lógica de Pular Abertura (visível antes de 1:34)
                 skipIntroBtn.classList.toggle('visible', cur < INTRO_END);
+                // Lógica de Pular Encerramento (visível após 8:26 até o finalzinho)
                 skipEndingBtn.classList.toggle('visible', cur >= ENDING_START && cur < dur - 1);
             } else {
                 skipIntroBtn.classList.remove('visible');
@@ -683,6 +639,5 @@
         function toggleEpisodeList() { document.getElementById('playerEpList').classList.toggle('open'); }
         function closeEpisodeList() { document.getElementById('playerEpList').classList.remove('open'); }
     </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
