@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix - Jujutsu Kaisen</title>
+    <title>Netflix - JoJo's Bizarre Adventure</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700;900&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap');
 
         :root {
             --netflix-red: #E50914;
@@ -24,17 +24,16 @@
             user-select: none;
         }
 
-        /* ---------- NAV ---------- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 18px 4%;
+            height: 70px;
+            padding: 0 4%;
             display: flex;
             align-items: center;
-            gap: 34px;
             box-sizing: border-box;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
             z-index: 100;
             transition: background 0.3s;
         }
@@ -43,157 +42,69 @@
         .logo {
             color: var(--netflix-red);
             font-family: 'Bebas Neue', cursive;
-            font-size: 2rem;
+            font-size: 2.2rem;
             letter-spacing: 1px;
+            margin-right: 40px;
             cursor: pointer;
         }
 
         .nav-links { display: flex; gap: 20px; list-style: none; padding: 0; margin: 0; }
-        .nav-links li { font-size: 0.85rem; color: #d2d2d2; cursor: pointer; transition: 0.2s; }
-        .nav-links li:hover, .nav-links li.active { color: white; font-weight: 700; }
+        .nav-links li { font-size: 0.85rem; color: #e5e5e5; cursor: pointer; transition: 0.3s; }
+        .nav-links li:hover, .nav-links li.active { color: white; font-weight: 500; }
 
-        /* ---------- HERO (Jujutsu Kaisen) ---------- */
         .hero {
-            height: 92vh;
-            min-height: 620px;
+            height: 85vh;
             position: relative;
             display: flex;
             align-items: center;
             padding: 0 4%;
-            overflow: hidden;
-            background:
-                /* Aura Azul (Gojo) e Aura Vermelha (Sukuna) */
-                radial-gradient(ellipse 900px 800px at 20% 30%, rgba(20, 80, 220, 0.4), transparent 60%),
-                radial-gradient(ellipse 800px 900px at 85% 65%, rgba(220, 20, 40, 0.45), transparent 60%),
-                linear-gradient(160deg, #07070a 0%, #0d0608 35%, #05040a 65%, #000000 100%);
+            background: url('https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=2000&auto=format&fit=crop') center/cover;
         }
-
-        .hero-art {
+        .hero::before {
+            content: "";
             position: absolute;
-            right: -5%;
-            top: 0;
-            height: 100%;
-            width: 60%;
-            opacity: 0.8;
-            pointer-events: none;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(20,20,20,1) 0%, rgba(20,20,20,0.5) 40%, transparent 100%),
+                        linear-gradient(to top, var(--bg-color) 0%, transparent 20%);
         }
-        
-        .hero-vignette {
-            position: absolute; inset: 0;
-            background: linear-gradient(to right, rgba(7,7,10,1) 0%, rgba(7,7,10,0.7) 38%, transparent 68%),
-                        linear-gradient(to top, var(--bg-color) 0%, transparent 28%);
-        }
-
-        .hero-content { position: relative; z-index: 10; max-width: 650px; margin-top: 40px; }
-
-        .n-badge-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
-        .n-icon {
-            width: 20px; height: 20px; background: var(--netflix-red);
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Bebas Neue', cursive; font-size: 15px; font-weight: 900;
-            border-radius: 2px;
-        }
-        .n-badge-row span { font-size: 0.78rem; letter-spacing: 3px; color: #d2d2d2; font-weight: 600; }
-
+        .hero-content { position: relative; z-index: 10; max-width: 650px; margin-top: 50px; }
         .series-title {
             font-family: 'Inter', sans-serif;
-            font-size: 4.2rem;
+            font-size: 4.5rem;
             font-weight: 900;
-            letter-spacing: 2px;
-            margin: 0 0 5px 0;
-            line-height: 1.1;
-            color: #ffffff;
             text-transform: uppercase;
-            text-shadow: 0 0 40px rgba(220, 20, 40, 0.4), 0 4px 18px rgba(0,0,0,0.8);
+            letter-spacing: -2px;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+            background: -webkit-linear-gradient(#fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .season-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 8px;
-            color: #ff3333;
-            margin: 0 0 18px 0;
-            text-transform: uppercase;
-        }
-
-        .top-10 { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-        .top-10-badge {
-            background: var(--netflix-red);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            width: 30px; height: 30px; line-height: 1; border-radius: 2px;
-        }
-        .top-10-badge span:first-child { font-size: 8px; font-weight: 700; letter-spacing: 1px; }
-        .top-10-badge span:last-child { font-size: 15px; font-weight: 900; }
-        .top-10-text { font-size: 1.05rem; font-weight: 700; color: #f2f2f2; }
-
-        .synopsis {
-            font-size: 1.15rem;
-            line-height: 1.5;
-            color: #e5e5e5;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
-            margin-bottom: 28px;
-            max-width: 580px;
-        }
-
-        .buttons { display: flex; gap: 14px; }
+        .top-10 { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; text-shadow: 1px 1px 3px black; }
+        .top-10-badge { background-color: var(--netflix-red); padding: 2px 6px; border-radius: 3px; font-size: 0.9rem; }
+        .synopsis { font-size: 1.15rem; line-height: 1.4; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-bottom: 30px; }
+        .buttons { display: flex; gap: 15px; }
         .btn {
-            padding: 11px 30px; border: none; border-radius: 4px; font-size: 1.1rem; font-weight: 700;
+            padding: 10px 28px; border: none; border-radius: 4px; font-size: 1.2rem; font-weight: 700;
             cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s ease;
         }
         .btn-play { background-color: white; color: black; }
         .btn-play:hover { background-color: rgba(255,255,255,0.75); }
-        .btn-info { background-color: rgba(109,109,110,0.6); color: white; }
+        .btn-info { background-color: rgba(109,109,110,0.7); color: white; }
         .btn-info:hover { background-color: rgba(109,109,110,0.4); }
 
-        /* ---------- POPULAR ROW ---------- */
-        .popular-section { position: relative; z-index: 20; margin-top: -70px; padding: 0 4% 20px; }
-        .section-title { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
+        /* ---- Seção de episódio único (JoJolion) ---- */
+        .episodes-section { padding: 0 4%; margin-top: -50px; position: relative; z-index: 20; padding-bottom: 10px; }
+        .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 700; }
 
-        .poster-row { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 16px; scroll-behavior: smooth; }
-        .poster-card {
-            position: relative; flex: 0 0 auto; width: 230px; height: 160px;
-            border-radius: 3px; overflow: hidden; cursor: pointer;
-            display: flex; align-items: flex-end;
-            transition: transform 0.2s ease, z-index 0s;
-        }
-        .poster-card:hover { transform: scale(1.08); z-index: 5; box-shadow: 0 12px 26px rgba(0,0,0,0.6); }
-        .poster-n {
-            position: absolute; top: 8px; left: 8px;
-            width: 18px; height: 18px; background: var(--netflix-red);
-            font-family: 'Bebas Neue', cursive; font-size: 13px; font-weight: 900;
-            display: flex; align-items: center; justify-content: center; border-radius: 2px;
-        }
-        .poster-title {
-            position: relative; width: 100%; padding: 10px;
-            font-size: 1rem; font-weight: 800; letter-spacing: 0.5px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.85);
-        }
-        .poster-tag {
-            position: absolute; bottom: 34px; left: 8px;
-            background: var(--netflix-red); color: white; font-size: 9.5px; font-weight: 700;
-            padding: 2px 6px; border-radius: 2px; letter-spacing: 0.5px;
-        }
-        .p1{background:linear-gradient(150deg,#0c1c2e 10%,#040a14 90%);}
-        .p2{background:linear-gradient(150deg,#3a0d0d,#160404);}
-        .p3{background:linear-gradient(150deg,#123018,#050f08);}
-        .p4{background:linear-gradient(150deg,#332608,#110c02);}
-        .p5{background:linear-gradient(150deg,#2b0d3a,#100416);}
-        .jjk-poster{
-            background:
-              radial-gradient(circle at 30% 20%, #184ea6 0%, #0d2a59 45%, #051024 80%),
-              linear-gradient(120deg,#ff3333 0%, transparent 45%);
-        }
-
-        /* ---------- Seção de episódio único ---------- */
-        .episodes-section { padding: 30px 4% 10px; position: relative; z-index: 20; }
         .episode-card {
-            display: flex; background: #1c1c1c; border-radius: 6px; overflow: hidden; max-width: 900px;
-            border-bottom: 1px solid #2c2c2c; cursor: pointer; transition: background 0.3s; align-items: center; padding: 15px;
+            display: flex; background: #222; border-radius: 6px; overflow: hidden; max-width: 900px;
+            border-bottom: 1px solid #333; cursor: pointer; transition: background 0.3s; align-items: center; padding: 15px;
         }
-        .episode-card:hover { background: #292929; }
+        .episode-card:hover { background: #333; }
         .ep-number { font-size: 1.5rem; color: var(--gray-text); font-weight: 700; width: 50px; text-align: center; }
         .ep-thumb-container { position: relative; width: 160px; min-width: 160px; height: 90px; border-radius: 4px; overflow: hidden; }
-        .ep-thumb { width: 100%; height: 100%; background: radial-gradient(circle at 75% 50%, #e62222, #1f0836 75%); }
+        .ep-thumb { width: 100%; height: 100%; background: linear-gradient(135deg,#6d28d9,#2e1065) center/cover; }
         .play-icon-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4);
             display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s;
@@ -206,6 +117,36 @@
         .ep-duration { font-size: 0.9rem; color: var(--gray-text); }
         .ep-desc { font-size: 0.9rem; color: var(--gray-text); line-height: 1.4; margin: 0; }
 
+        /* ---- Fileira de catálogo (Steel Ball Run) ---- */
+        .sbr-section { padding: 40px 4% 10px; position: relative; z-index: 20; }
+        .sbr-row {
+            display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 20px;
+            scroll-behavior: smooth;
+        }
+        .sbr-card {
+            position: relative; flex: 0 0 auto; width: 210px; height: 120px;
+            border-radius: 4px; overflow: hidden; cursor: default;
+            display: flex; align-items: flex-end;
+            transition: transform 0.2s ease;
+            filter: saturate(0.7);
+        }
+        .sbr-card.playable { cursor: pointer; filter: none; border: 2px solid var(--netflix-red); }
+        .sbr-card:hover { transform: scale(1.06); }
+        .sbr-card .num-badge {
+            position: absolute; top: 6px; left: 8px; font-size: 11px; font-weight: 700;
+            background: rgba(0,0,0,0.55); padding: 2px 7px; border-radius: 3px;
+        }
+        .sbr-card .lbl { position: relative; padding: 8px; font-size: 12px; font-weight: 700; width: 100%; text-shadow: 0 1px 4px rgba(0,0,0,.8); }
+        .sbr-card .soon-tag { position: absolute; bottom: 6px; left: 8px; font-size: 9.5px; color: #ddd; background: rgba(0,0,0,.5); padding: 1px 6px; border-radius: 2px; }
+        .sbr-card .play-icon-overlay { opacity: 0; }
+        .sbr-card.playable:hover .play-icon-overlay { opacity: 1; }
+        .g1{background:linear-gradient(135deg,#1f2b45,#0c1120);}
+        .g2{background:linear-gradient(135deg,#3a0d0d,#160404);}
+        .g3{background:linear-gradient(135deg,#0d3a2e,#04160f);}
+        .g4{background:linear-gradient(135deg,#3a2b0d,#160f04);}
+        .g5{background:linear-gradient(135deg,#2b0d3a,#100416);}
+        .g6{background:linear-gradient(135deg,#0d243a,#040d16);}
+
         /* ================= PLAYER ================= */
         .video-modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -214,9 +155,11 @@
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .player-container { position: relative; width: 100%; height: 100%; max-width: 1280px; max-height: 720px; background: #000; overflow: hidden; }
+        .player-container {
+            position: relative; width: 100%; height: 100%; max-width: 1280px; max-height: 720px;
+            background: #000; overflow: hidden;
+        }
 
-        #ytPlayerDiv, #ytPlayerDiv iframe { width: 100% !important; height: 100% !important; position: absolute; top: 0; left: 0; pointer-events: none; }
         #videoEl { width: 100%; height: 100%; object-fit: contain; background: #000; }
 
         .controls-overlay {
@@ -252,29 +195,35 @@
         .bottom-icon svg { width: 20px; height: 20px; fill: white; }
         .bottom-icon.disabled { opacity: 0.35; cursor: default; }
 
+        /* botões de pular abertura/encerramento */
         .skip-btn {
-            position: absolute; bottom: 100px; right: 30px; z-index: 7;
-            background: rgba(30,30,30,0.85); border: 1px solid rgba(255,255,255,0.4); color: white;
-            padding: 10px 18px; font-size: 0.9rem; font-weight: 600; border-radius: 3px; cursor: pointer; display: none;
+            position: absolute;
+            bottom: 100px; right: 30px;
+            z-index: 7;
+            background: rgba(30,30,30,0.85);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 3px;
+            cursor: pointer;
+            display: none;
         }
         .skip-btn:hover { background: rgba(50,50,50,0.95); }
         .skip-btn.visible { display: block; }
 
         .player-ep-list {
-            position: absolute; right: 0; top: 0; bottom: 0; width: 340px; background: rgba(20,20,20,0.97);
-            z-index: 20; transform: translateX(100%); transition: transform 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;
+            position: absolute; right: 0; top: 0; bottom: 0; width: 340px;
+            background: rgba(20,20,20,0.97); z-index: 20; transform: translateX(100%);
+            transition: transform 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;
         }
         .player-ep-list.open { transform: translateX(0); }
         .player-ep-list h4 { margin: 0 0 16px; font-size: 1.1rem; }
         .player-ep-row { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #333; cursor: pointer; }
-        .player-ep-row .mini-thumb { width: 100px; height: 56px; object-fit: cover; border-radius: 3px; background: linear-gradient(135deg,#e62222,#1f0836); }
+        .player-ep-row img, .player-ep-row .mini-thumb { width: 100px; height: 56px; object-fit: cover; border-radius: 3px; background: linear-gradient(135deg,#6d28d9,#2e1065); }
         .player-ep-row .t { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
         .player-ep-row .d { font-size: 0.72rem; color: var(--gray-text); }
-
-        @media (max-width: 760px) {
-            .series-title { font-size: 3rem; }
-            .nav-links li:nth-child(n+4) { display: none; }
-        }
     </style>
 </head>
 <body>
@@ -285,88 +234,34 @@
             <li class="active">Início</li>
             <li>Séries</li>
             <li>Filmes</li>
-            <li>Novidades populares</li>
+            <li>Bombando</li>
             <li>Minha lista</li>
         </ul>
     </header>
 
     <section class="hero">
-        <!-- Arte SVG representando a colisão dos domínios (Gojo x Sukuna) -->
-        <svg class="hero-art" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
-            <defs>
-                <radialGradient id="glowBlue" cx="30%" cy="40%" r="50%">
-                    <stop offset="0%" stop-color="#184ea6" stop-opacity="0.7"/>
-                    <stop offset="100%" stop-color="#184ea6" stop-opacity="0"/>
-                </radialGradient>
-                <radialGradient id="glowRed" cx="70%" cy="60%" r="50%">
-                    <stop offset="0%" stop-color="#e62222" stop-opacity="0.6"/>
-                    <stop offset="100%" stop-color="#e62222" stop-opacity="0"/>
-                </radialGradient>
-            </defs>
-            <circle cx="200" cy="300" r="350" fill="url(#glowBlue)"/>
-            <circle cx="450" cy="500" r="350" fill="url(#glowRed)"/>
-            
-            <!-- Cortes do Sukuna (Dismantle/Cleave) -->
-            <g stroke="#ff3333" stroke-width="3" opacity="0.8" style="transform: rotate(15deg); transform-origin: center;">
-                <path d="M 300 150 L 550 450"/>
-                <path d="M 350 100 L 600 400"/>
-                <path d="M 250 200 L 500 500"/>
-            </g>
-
-            <!-- Vazio Imensurável / Infinito do Gojo -->
-            <circle cx="180" cy="280" r="45" fill="none" stroke="#66a3ff" stroke-width="4" opacity="0.8"/>
-            <circle cx="180" cy="280" r="20" fill="#ffffff" opacity="0.9" filter="blur(2px)"/>
-        </svg>
-        <div class="hero-vignette"></div>
-
         <div class="hero-content">
-            <div class="n-badge-row">
-                <div class="n-icon">N</div>
-                <span>ANIME</span>
-            </div>
-            <h1 class="series-title">JUJUTSU KAISEN</h1>
-            <h2 class="season-subtitle">Temporada 4</h2>
-            <div class="top-10">
-                <div class="top-10-badge"><span>TOP</span><span>10</span></div>
-                <span class="top-10-text">#1 em animes hoje</span>
-            </div>
+            <h1 class="series-title">JoJo's Bizarre Adventure:<br>JoJolion</h1>
+            <div class="top-10"><span class="top-10-badge">TOP 10</span> Hoje no Brasil</div>
             <p class="synopsis">
-                A batalha mais aguardada de todos os tempos. Satoru Gojo, o feiticeiro mais forte da era atual, finalmente enfrenta Ryomen Sukuna, o Rei das Maldições. O destino de todo o mundo jujutsu será decidido neste épico e brutal confronto em Shinjuku.
+                Na cidade de Morioh, assolada pelo terremoto de 2011, a jovem Yasuho Hirose encontra um rapaz sem memórias enterrado no solo. Com uma estranha marca de nascença e segredos bizarros, ele precisa descobrir quem realmente é.
             </p>
             <div class="buttons">
-                <!-- Disparando o player local que aponta para o streamable -->
-                <button class="btn btn-play" onclick="openPlayer('local', 'S4:E1 &quot;A Batalha do Mais Forte&quot;')">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="black"><path d="M8 5v14l11-7z"/></svg>
+                <button class="btn btn-play" onclick="openPlayer('S1:E1 &quot;Bem-vindo a Morioh&quot;')">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="black"><path d="M8 5v14l11-7z"/></svg>
                     Assistir
                 </button>
                 <button class="btn btn-info">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                    Mais Informações
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    Mais informações
                 </button>
             </div>
-        </div>
-    </section>
-
-    <!-- Fileira "Popular na Netflix" -->
-    <section class="popular-section">
-        <h2 class="section-title">Em Alta</h2>
-        <div class="poster-row">
-            <div class="poster-card jjk-poster" onclick="openPlayer('local', 'S4:E1 &quot;A Batalha do Mais Forte&quot;')">
-                <div class="poster-n">N</div>
-                <span class="poster-tag">NOVA TEMPORADA</span>
-                <div class="poster-title">Jujutsu Kaisen</div>
-            </div>
-            <div class="poster-card p1"><div class="poster-n">N</div><div class="poster-title">JoJo's Bizarre Adventure</div></div>
-            <div class="poster-card p2"><div class="poster-n">N</div><div class="poster-title">Distrito Cassiopeia</div></div>
-            <div class="poster-card p3"><div class="poster-n">N</div><div class="poster-title">Neon Static</div></div>
-            <div class="poster-card p4"><div class="poster-n">N</div><div class="poster-title">Iron Bloom</div></div>
-            <div class="poster-card p5"><div class="poster-n">N</div><div class="poster-title">Última Aurora</div></div>
         </div>
     </section>
 
     <section class="episodes-section">
-        <h2 class="section-title">Episódios — Shinjuku Showdown</h2>
-        <div class="episode-card" onclick="openPlayer('local', 'S4:E1 &quot;A Batalha do Mais Forte&quot;')">
+        <h2 class="section-title">Episódios</h2>
+        <div class="episode-card" onclick="openPlayer('S1:E1 &quot;Bem-vindo a Morioh&quot;')">
             <div class="ep-number">1</div>
             <div class="ep-thumb-container">
                 <div class="ep-thumb"></div>
@@ -376,25 +271,25 @@
             </div>
             <div class="ep-info">
                 <div class="ep-header">
-                    <h3 class="ep-title">A Batalha do Mais Forte</h3>
-                    <span class="ep-duration">24 min</span>
+                    <h3 class="ep-title">Bem-vindo a Morioh</h3>
+                    <span class="ep-duration" id="epDurationLabel">5 min</span>
                 </div>
-                <p class="ep-desc">No dia 24 de dezembro, Satoru Gojo finalmente fica frente a frente com Ryomen Sukuna em Shinjuku. Os dois titãs trocam os primeiros golpes, demonstrando níveis absurdos de poder que deixam todos os feiticeiros observando em choque.</p>
+                <p class="ep-desc">Após um misterioso tremor de terra criar as "Paredes Oculares", a estudante Yasuho descobre um jovem nu enterrado. Um estranho encontro que dará início a uma bizarra jornada em busca de sua identidade.</p>
             </div>
         </div>
+    </section>
+
+    <!-- Catálogo Steel Ball Run -->
+    <section class="sbr-section">
+        <h2 class="section-title">JoJo's Bizarre Adventure: Steel Ball Run</h2>
+        <div class="sbr-row" id="sbrRow"></div>
     </section>
 
     <!-- Player -->
     <div class="video-modal" id="videoModal">
         <div class="player-container" id="playerContainer">
 
-            <div id="ytPlayerDiv"></div>
-            <!-- Video SRC atualizado com o link Streamable pedido -->
-            <video id="videoEl"
-       src="https://cdn-cf-east.streamable.com/video/mp4/pozb8p.mp4"
-       playsinline
-       controls>
-</video>
+            <video id="videoEl" src="episode1.mp4" playsinline></video>
 
             <div class="player-ep-list" id="playerEpList">
                 <h4>Episódios</h4>
@@ -415,7 +310,7 @@
 
                 <div class="controls-top">
                     <button class="back-btn" onclick="event.stopPropagation(); closePlayer();">&#8592;</button>
-                    <div class="ep-title-display" id="epTitleDisplay">S4:E1 "A Batalha do Mais Forte"</div>
+                    <div class="ep-title-display" id="epTitleDisplay">S1:E1 "Bem-vindo a Morioh"</div>
                     <div class="top-spacer"></div>
                 </div>
 
@@ -465,23 +360,35 @@
     </div>
 
     <script>
+        // ------- navbar -------
         window.addEventListener('scroll', () => {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Configuração de tempos solicitados:
-        // Abertura termina em 1:34 (94 segundos)
-        const INTRO_END = 94; 
-        
-        // Encerramento inicia em 8:26 (506 segundos)
-        const ENDING_START = 506; 
+        // ------- gera o catálogo falso de Steel Ball Run (24 episódios) -------
+        const sbrRow = document.getElementById('sbrRow');
+        const grads = ['g1','g2','g3','g4','g5','g6'];
+        const TOTAL_EPISODES = 24;
+        for (let i = 1; i <= TOTAL_EPISODES; i++) {
+            const isLast = i === TOTAL_EPISODES;
+            const card = document.createElement('div');
+            card.className = 'sbr-card ' + grads[i % grads.length] + (isLast ? ' playable' : '');
+            card.innerHTML = `
+                <span class="num-badge">EP ${i}</span>
+                ${isLast ? `<div class="play-icon-overlay" style="opacity:0;">
+                    <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="1"/><path d="M10 8v8l6-4z" fill="white"/></svg>
+                </div>` : ''}
+                <div class="lbl">${isLast ? 'Explosão Final — Disponível' : 'Capítulo ' + i}</div>
+                ${isLast ? '' : '<span class="soon-tag">Em breve</span>'}
+            `;
+            if (isLast) {
+                card.onclick = () => openPlayer('S1:E24 "Explosão Final"');
+            }
+            sbrRow.appendChild(card);
+        }
 
-        let ytPlayer = null;
-        let playerReady = false;
-        let currentType = 'local'; 
-        let isLocked = false;
-        let hideTimer = null;
-
+        // ------- player em vídeo local (mp4) -------
+        const videoEl = document.getElementById('videoEl');
         const modal = document.getElementById('videoModal');
         const overlay = document.getElementById('controlsOverlay');
         const playPauseIcon = document.getElementById('playPauseIcon');
@@ -492,63 +399,43 @@
         const epListTitle = document.getElementById('epListTitle');
         const skipIntroBtn = document.getElementById('skipIntroBtn');
         const skipEndingBtn = document.getElementById('skipEndingBtn');
-        const videoEl = document.getElementById('videoEl');
-        const ytPlayerDiv = document.getElementById('ytPlayerDiv');
 
         const ICON_PLAY = '<path d="M8 5v14l11-7z"/>';
         const ICON_PAUSE = '<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>';
 
-        function openPlayer(type, title) {
-            currentType = type;
+        const INTRO_END = 105;   // 1:45 — fim da abertura
+        const ENDING_START = 265; // 4:25 — início do encerramento
+
+        let isLocked = false;
+        let hideTimer = null;
+
+        function setIcon(playing) { playPauseIcon.innerHTML = playing ? ICON_PAUSE : ICON_PLAY; }
+
+        function openPlayer(title) {
             epTitleDisplay.textContent = title;
             epListTitle.textContent = title;
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             overlay.classList.remove('playing-hidden');
             overlay.classList.add('dimmed');
-
-            ytPlayerDiv.style.display = type === 'youtube' ? 'block' : 'none';
-            videoEl.style.display = type === 'local' ? 'block' : 'none';
-
-            if (type === 'youtube') {
-                videoEl.pause();
-                const start = () => { ytPlayer.seekTo(0); ytPlayer.playVideo(); };
-                if (playerReady) start();
-            } else {
-                if (playerReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') ytPlayer.pauseVideo();
-                videoEl.currentTime = 0;
-                videoEl.play().catch(e => console.log('Autoplay preventido. É necessário interação do usuário.'));
-            }
-            scheduleAutoHide();
+            videoEl.currentTime = 0;
+            videoEl.play();
         }
 
         function closePlayer() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
             clearTimeout(hideTimer);
-            if (playerReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') ytPlayer.pauseVideo();
             videoEl.pause();
             closeEpisodeList();
         }
 
         function togglePlay() {
-            if (currentType === 'youtube') {
-                if (!playerReady) return;
-                const st = ytPlayer.getPlayerState();
-                if (st === YT.PlayerState.PLAYING) ytPlayer.pauseVideo(); else ytPlayer.playVideo();
-            } else {
-                if (videoEl.paused) videoEl.play(); else videoEl.pause();
-            }
-            showControls();
+            if (videoEl.paused) videoEl.play(); else videoEl.pause();
         }
 
         function seekRelative(delta) {
-            if (currentType === 'youtube') {
-                if (!playerReady) return;
-                ytPlayer.seekTo(Math.max(0, ytPlayer.getCurrentTime() + delta), true);
-            } else {
-                videoEl.currentTime = Math.max(0, Math.min(videoEl.duration || 0, videoEl.currentTime + delta));
-            }
+            videoEl.currentTime = Math.max(0, Math.min(videoEl.duration || 0, videoEl.currentTime + delta));
             showControls();
         }
 
@@ -557,16 +444,12 @@
             const bar = document.getElementById('progressBar');
             const rect = bar.getBoundingClientRect();
             const pct = Math.min(1, Math.max(0, (evt.clientX - rect.left) / rect.width));
-            if (currentType === 'youtube') {
-                if (playerReady) ytPlayer.seekTo(pct * ytPlayer.getDuration(), true);
-            } else {
-                videoEl.currentTime = pct * (videoEl.duration || 0);
-            }
+            videoEl.currentTime = pct * (videoEl.duration || 0);
             evt.stopPropagation();
         }
 
-        function skipIntro() { if (currentType === 'local') { videoEl.currentTime = INTRO_END; showControls(); } }
-        function skipEnding() { if (currentType === 'local') { videoEl.currentTime = Math.max(0, (videoEl.duration || 0) - 0.3); showControls(); } }
+        function skipIntro() { videoEl.currentTime = INTRO_END; showControls(); }
+        function skipEnding() { videoEl.currentTime = Math.max(0, (videoEl.duration || 0) - 0.3); showControls(); }
 
         function formatTime(secs) {
             secs = Math.max(0, Math.round(secs));
@@ -575,44 +458,32 @@
             return m + ':' + String(s).padStart(2, '0');
         }
 
-        // Loop de verificação de botões (Pular Abertura/Encerramento)
-        setInterval(() => {
-            if (modal.style.display !== 'flex') return;
-            let cur = 0, dur = 0, playing = false;
-            
-            if (currentType === 'youtube' && playerReady) {
-                cur = ytPlayer.getCurrentTime() || 0;
-                dur = ytPlayer.getDuration() || 0;
-                playing = ytPlayer.getPlayerState() === YT.PlayerState.PLAYING;
-            } else if (currentType === 'local') {
-                cur = videoEl.currentTime || 0;
-                dur = videoEl.duration || 0;
-                playing = !videoEl.paused;
-            }
-            
-            playPauseIcon.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
-            
+        videoEl.addEventListener('play', () => { setIcon(true); scheduleAutoHide(); });
+        videoEl.addEventListener('pause', () => { setIcon(false); showControls(); });
+
+        videoEl.addEventListener('timeupdate', () => {
+            const dur = videoEl.duration || 0;
+            const cur = videoEl.currentTime || 0;
             if (dur > 0) {
                 const pct = (cur / dur) * 100;
                 progressFill.style.width = pct + '%';
                 progressDot.style.left = pct + '%';
                 timeRemaining.textContent = formatTime(dur - cur);
             }
-            
-            if (currentType === 'local') {
-                // Lógica de Pular Abertura (visível antes de 1:34)
-                skipIntroBtn.classList.toggle('visible', cur < INTRO_END);
-                // Lógica de Pular Encerramento (visível após 8:26 até o finalzinho)
-                skipEndingBtn.classList.toggle('visible', cur >= ENDING_START && cur < dur - 1);
-            } else {
-                skipIntroBtn.classList.remove('visible');
-                skipEndingBtn.classList.remove('visible');
-            }
-        }, 250);
+            // Pular Abertura: visível enquanto ainda não passou dos 1:45
+            skipIntroBtn.classList.toggle('visible', cur < INTRO_END);
+            // Pular Encerramento: visível a partir dos 4:25
+            skipEndingBtn.classList.toggle('visible', cur >= ENDING_START && cur < dur - 1);
+        });
 
+        // ------- mostrar/ocultar controles -------
         function handleOverlayTap() {
             if (isLocked) return;
-            if (overlay.classList.contains('playing-hidden')) showControls(); else togglePlay();
+            if (overlay.classList.contains('playing-hidden')) {
+                showControls();
+            } else {
+                togglePlay();
+            }
         }
 
         function showControls() {
@@ -624,10 +495,7 @@
         function scheduleAutoHide() {
             clearTimeout(hideTimer);
             hideTimer = setTimeout(() => {
-                const playing = currentType === 'youtube'
-                    ? (playerReady && ytPlayer.getPlayerState() === YT.PlayerState.PLAYING)
-                    : !videoEl.paused;
-                if (playing && !isLocked) {
+                if (!videoEl.paused && !isLocked) {
                     overlay.classList.add('playing-hidden');
                     overlay.classList.remove('dimmed');
                 }
