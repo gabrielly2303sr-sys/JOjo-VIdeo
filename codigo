@@ -289,7 +289,7 @@
     <div class="video-modal" id="videoModal">
         <div class="player-container" id="playerContainer">
 
-            <video id="videoEl" src="episode1.mp4" playsinline></video>
+            <video id="videoEl" src="episode1(1).mp4" playsinline></video>
 
             <div class="player-ep-list" id="playerEpList">
                 <h4>Episódios</h4>
