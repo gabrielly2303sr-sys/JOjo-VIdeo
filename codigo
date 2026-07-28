@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - JoJo's Bizarre Adventure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap');
+
+        :root {
+            --netflix-red: #E50914;
+            --bg-color: #141414;
+            --text-color: #ffffff;
+            --gray-text: #a3a3a3;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            padding: 0 4%;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        header.scrolled { background: var(--bg-color); }
+
+        .logo {
+            color: var(--netflix-red);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+
+        .nav-links { display: flex; gap: 20px; list-style: none; padding: 0; margin: 0; }
+        .nav-links li { font-size: 0.85rem; color: #e5e5e5; cursor: pointer; transition: 0.3s; }
+        .nav-links li:hover, .nav-links li.active { color: white; font-weight: 500; }
+
+        .hero {
+            height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 4%;
+            background: url('https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=2000&auto=format&fit=crop') center/cover;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(20,20,20,1) 0%, rgba(20,20,20,0.5) 40%, transparent 100%),
+                        linear-gradient(to top, var(--bg-color) 0%, transparent 20%);
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 650px; margin-top: 50px; }
+        .series-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+            background: -webkit-linear-gradient(#fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .top-10 { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; text-shadow: 1px 1px 3px black; }
+        .top-10-badge { background-color: var(--netflix-red); padding: 2px 6px; border-radius: 3px; font-size: 0.9rem; }
+        .synopsis { font-size: 1.15rem; line-height: 1.4; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-bottom: 30px; }
+        .buttons { display: flex; gap: 15px; }
+        .btn {
+            padding: 10px 28px; border: none; border-radius: 4px; font-size: 1.2rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s ease;
+        }
+        .btn-play { background-color: white; color: black; }
+        .btn-play:hover { background-color: rgba(255,255,255,0.75); }
+        .btn-info { background-color: rgba(109,109,110,0.7); color: white; }
+        .btn-info:hover { background-color: rgba(109,109,110,0.4); }
+
+        /* ---- Seção de episódio único (JoJolion) ---- */
+        .episodes-section { padding: 0 4%; margin-top: -50px; position: relative; z-index: 20; padding-bottom: 10px; }
+        .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 700; }
+
+        .episode-card {
+            display: flex; background: #222; border-radius: 6px; overflow: hidden; max-width: 900px;
+            border-bottom: 1px solid #333; cursor: pointer; transition: background 0.3s; align-items: center; padding: 15px;
+        }
+        .episode-card:hover { background: #333; }
+        .ep-number { font-size: 1.5rem; color: var(--gray-text); font-weight: 700; width: 50px; text-align: center; }
+        .ep-thumb-container { position: relative; width: 160px; min-width: 160px; height: 90px; border-radius: 4px; overflow: hidden; }
+        .ep-thumb { width: 100%; height: 100%; background: linear-gradient(135deg,#6d28d9,#2e1065) center/cover; }
+        .play-icon-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4);
+            display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s;
+        }
+        .play-icon-overlay svg { width: 40px; height: 40px; fill: white; }
+        .episode-card:hover .play-icon-overlay { opacity: 1; }
+        .ep-info { padding: 0 20px; flex-grow: 1; }
+        .ep-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .ep-title { font-size: 1.1rem; font-weight: 700; margin: 0; }
+        .ep-duration { font-size: 0.9rem; color: var(--gray-text); }
+        .ep-desc { font-size: 0.9rem; color: var(--gray-text); line-height: 1.4; margin: 0; }
+
+        /* ---- Fileira de catálogo (Steel Ball Run) ---- */
+        .sbr-section { padding: 40px 4% 10px; position: relative; z-index: 20; }
+        .sbr-row {
+            display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 20px;
+            scroll-behavior: smooth;
+        }
+        .sbr-card {
+            position: relative; flex: 0 0 auto; width: 210px; height: 120px;
+            border-radius: 4px; overflow: hidden; cursor: default;
+            display: flex; align-items: flex-end;
+            transition: transform 0.2s ease;
+            filter: saturate(0.7);
+        }
+        .sbr-card.playable { cursor: pointer; filter: none; border: 2px solid var(--netflix-red); }
+        .sbr-card:hover { transform: scale(1.06); }
+        .sbr-card .num-badge {
+            position: absolute; top: 6px; left: 8px; font-size: 11px; font-weight: 700;
+            background: rgba(0,0,0,0.55); padding: 2px 7px; border-radius: 3px;
+        }
+        .sbr-card .lbl { position: relative; padding: 8px; font-size: 12px; font-weight: 700; width: 100%; text-shadow: 0 1px 4px rgba(0,0,0,.8); }
+        .sbr-card .soon-tag { position: absolute; bottom: 6px; left: 8px; font-size: 9.5px; color: #ddd; background: rgba(0,0,0,.5); padding: 1px 6px; border-radius: 2px; }
+        .sbr-card .play-icon-overlay { opacity: 0; }
+        .sbr-card.playable:hover .play-icon-overlay { opacity: 1; }
+        .g1{background:linear-gradient(135deg,#1f2b45,#0c1120);}
+        .g2{background:linear-gradient(135deg,#3a0d0d,#160404);}
+        .g3{background:linear-gradient(135deg,#0d3a2e,#04160f);}
+        .g4{background:linear-gradient(135deg,#3a2b0d,#160f04);}
+        .g5{background:linear-gradient(135deg,#2b0d3a,#100416);}
+        .g6{background:linear-gradient(135deg,#0d243a,#040d16);}
+
+        /* ================= PLAYER ================= */
+        .video-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: black; z-index: 9999; justify-content: center; align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .player-container {
+            position: relative; width: 100%; height: 100%; max-width: 1280px; max-height: 720px;
+            background: #000; overflow: hidden;
+        }
+
+        #videoEl { width: 100%; height: 100%; object-fit: contain; background: #000; }
+
+        .controls-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5;
+            display: flex; flex-direction: column; justify-content: space-between;
+            opacity: 1; transition: opacity 0.35s ease, background 0.35s ease; cursor: pointer;
+        }
+        .controls-overlay.playing-hidden { opacity: 0; pointer-events: none; }
+        .controls-overlay.playing-hidden .tap-catcher { pointer-events: auto; }
+        .controls-overlay.dimmed { background: rgba(0,0,0,0.45); }
+        .tap-catcher { position: absolute; inset: 0; }
+
+        .controls-top, .controls-bottom { position: relative; z-index: 6; padding: 18px 22px; display: flex; align-items: center; box-sizing: border-box; }
+        .controls-top { justify-content: space-between; background: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent); }
+        .back-btn { background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; line-height: 1; }
+        .ep-title-display { color: white; font-size: 1rem; font-weight: 500; text-align: center; flex: 1; }
+        .top-spacer { width: 30px; }
+
+        .controls-center { position: relative; z-index: 6; flex: 1; display: flex; align-items: center; justify-content: center; gap: 70px; }
+        .center-btn { background: none; border: none; color: white; cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; gap: 2px; }
+        .center-btn svg { width: 34px; height: 34px; fill: white; }
+        .play-pause-btn svg { width: 52px; height: 52px; fill: white; }
+
+        .controls-bottom { flex-direction: column; align-items: stretch; gap: 14px; background: linear-gradient(to top, rgba(0,0,0,0.75), transparent); }
+        .progress-row { display: flex; align-items: center; gap: 10px; }
+        .progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px; position: relative; cursor: pointer; }
+        .progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--netflix-red); border-radius: 2px; }
+        .progress-dot { position: absolute; top: 50%; width: 12px; height: 12px; background: var(--netflix-red); border-radius: 50%; transform: translate(-50%, -50%); left: 0%; }
+        .time-remaining { color: white; font-size: 0.8rem; min-width: 46px; text-align: right; }
+
+        .bottom-icons { display: flex; justify-content: space-between; padding: 0 4px 6px; }
+        .bottom-icon { display: flex; flex-direction: column; align-items: center; gap: 4px; color: white; font-size: 0.68rem; cursor: pointer; opacity: 0.95; }
+        .bottom-icon svg { width: 20px; height: 20px; fill: white; }
+        .bottom-icon.disabled { opacity: 0.35; cursor: default; }
+
+        /* botões de pular abertura/encerramento */
+        .skip-btn {
+            position: absolute;
+            bottom: 100px; right: 30px;
+            z-index: 7;
+            background: rgba(30,30,30,0.85);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 3px;
+            cursor: pointer;
+            display: none;
+        }
+        .skip-btn:hover { background: rgba(50,50,50,0.95); }
+        .skip-btn.visible { display: block; }
+
+        .player-ep-list {
+            position: absolute; right: 0; top: 0; bottom: 0; width: 340px;
+            background: rgba(20,20,20,0.97); z-index: 20; transform: translateX(100%);
+            transition: transform 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;
+        }
+        .player-ep-list.open { transform: translateX(0); }
+        .player-ep-list h4 { margin: 0 0 16px; font-size: 1.1rem; }
+        .player-ep-row { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #333; cursor: pointer; }
+        .player-ep-row img, .player-ep-row .mini-thumb { width: 100px; height: 56px; object-fit: cover; border-radius: 3px; background: linear-gradient(135deg,#6d28d9,#2e1065); }
+        .player-ep-row .t { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+        .player-ep-row .d { font-size: 0.72rem; color: var(--gray-text); }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="logo">NETFLIX</div>
+        <ul class="nav-links">
+            <li class="active">Início</li>
+            <li>Séries</li>
+            <li>Filmes</li>
+            <li>Bombando</li>
+            <li>Minha lista</li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="series-title">JoJo's Bizarre Adventure:<br>JoJolion</h1>
+            <div class="top-10"><span class="top-10-badge">TOP 10</span> Hoje no Brasil</div>
+            <p class="synopsis">
+                Na cidade de Morioh, assolada pelo terremoto de 2011, a jovem Yasuho Hirose encontra um rapaz sem memórias enterrado no solo. Com uma estranha marca de nascença e segredos bizarros, ele precisa descobrir quem realmente é.
+            </p>
+            <div class="buttons">
+                <button class="btn btn-play" onclick="openPlayer('S1:E1 &quot;Bem-vindo a Morioh&quot;')">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="black"><path d="M8 5v14l11-7z"/></svg>
+                    Assistir
+                </button>
+                <button class="btn btn-info">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    Mais informações
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="episodes-section">
+        <h2 class="section-title">Episódios</h2>
+        <div class="episode-card" onclick="openPlayer('S1:E1 &quot;Bem-vindo a Morioh&quot;')">
+            <div class="ep-number">1</div>
+            <div class="ep-thumb-container">
+                <div class="ep-thumb"></div>
+                <div class="play-icon-overlay">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="1"/><path d="M10 8v8l6-4z" fill="white"/></svg>
+                </div>
+            </div>
+            <div class="ep-info">
+                <div class="ep-header">
+                    <h3 class="ep-title">Bem-vindo a Morioh</h3>
+                    <span class="ep-duration" id="epDurationLabel">5 min</span>
+                </div>
+                <p class="ep-desc">Após um misterioso tremor de terra criar as "Paredes Oculares", a estudante Yasuho descobre um jovem nu enterrado. Um estranho encontro que dará início a uma bizarra jornada em busca de sua identidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo Steel Ball Run -->
+    <section class="sbr-section">
+        <h2 class="section-title">JoJo's Bizarre Adventure: Steel Ball Run</h2>
+        <div class="sbr-row" id="sbrRow"></div>
+    </section>
+
+    <!-- Player -->
+    <div class="video-modal" id="videoModal">
+        <div class="player-container" id="playerContainer">
+
+            <video id="videoEl" src="episode1.mp4" playsinline></video>
+
+            <div class="player-ep-list" id="playerEpList">
+                <h4>Episódios</h4>
+                <div class="player-ep-row" onclick="closeEpisodeList()">
+                    <div class="mini-thumb"></div>
+                    <div>
+                        <div class="t" id="epListTitle">Episódio atual</div>
+                        <div class="d">Vídeo em reprodução.</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="skip-btn" id="skipIntroBtn" onclick="event.stopPropagation(); skipIntro();">Pular Abertura</button>
+            <button class="skip-btn" id="skipEndingBtn" onclick="event.stopPropagation(); skipEnding();">Pular Encerramento</button>
+
+            <div class="controls-overlay" id="controlsOverlay" onclick="handleOverlayTap(event)">
+                <div class="tap-catcher"></div>
+
+                <div class="controls-top">
+                    <button class="back-btn" onclick="event.stopPropagation(); closePlayer();">&#8592;</button>
+                    <div class="ep-title-display" id="epTitleDisplay">S1:E1 "Bem-vindo a Morioh"</div>
+                    <div class="top-spacer"></div>
+                </div>
+
+                <div class="controls-center">
+                    <button class="center-btn" onclick="event.stopPropagation(); seekRelative(-10);">
+                        <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                        10
+                    </button>
+                    <button class="center-btn play-pause-btn" id="playPauseBtn" onclick="event.stopPropagation(); togglePlay();">
+                        <svg id="playPauseIcon" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+                    </button>
+                    <button class="center-btn" onclick="event.stopPropagation(); seekRelative(10);">
+                        <svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/></svg>
+                        10
+                    </button>
+                </div>
+
+                <div class="controls-bottom" onclick="event.stopPropagation();">
+                    <div class="progress-row">
+                        <div class="progress-bar" id="progressBar" onclick="seekClick(event)">
+                            <div class="progress-fill" id="progressFill"></div>
+                            <div class="progress-dot" id="progressDot"></div>
+                        </div>
+                        <span class="time-remaining" id="timeRemaining">-:--</span>
+                    </div>
+                    <div class="bottom-icons">
+                        <div class="bottom-icon" id="lockIcon" onclick="toggleLock()">
+                            <svg viewBox="0 0 24 24"><path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm-3 8V6a3 3 0 016 0v3z"/></svg>
+                            <span id="lockLabel">Bloq. de tela</span>
+                        </div>
+                        <div class="bottom-icon" onclick="toggleEpisodeList()">
+                            <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>
+                            <span>Episódios</span>
+                        </div>
+                        <div class="bottom-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v9a2 2 0 002 2h3l-1 3h12l-1-3h3a2 2 0 002-2V6a2 2 0 00-2-2z"/></svg>
+                            <span>Áudio e legendas</span>
+                        </div>
+                        <div class="bottom-icon disabled">
+                            <svg viewBox="0 0 24 24"><path d="M6 5v14l8-7zm10 0v14h2V5z"/></svg>
+                            <span>Próx. Ep.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ------- navbar -------
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ------- gera o catálogo falso de Steel Ball Run (24 episódios) -------
+        const sbrRow = document.getElementById('sbrRow');
+        const grads = ['g1','g2','g3','g4','g5','g6'];
+        const TOTAL_EPISODES = 24;
+        for (let i = 1; i <= TOTAL_EPISODES; i++) {
+            const isLast = i === TOTAL_EPISODES;
+            const card = document.createElement('div');
+            card.className = 'sbr-card ' + grads[i % grads.length] + (isLast ? ' playable' : '');
+            card.innerHTML = `
+                <span class="num-badge">EP ${i}</span>
+                ${isLast ? `<div class="play-icon-overlay" style="opacity:0;">
+                    <svg viewBox="0 0 24 24" width="34" height="34"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="1"/><path d="M10 8v8l6-4z" fill="white"/></svg>
+                </div>` : ''}
+                <div class="lbl">${isLast ? 'Explosão Final — Disponível' : 'Capítulo ' + i}</div>
+                ${isLast ? '' : '<span class="soon-tag">Em breve</span>'}
+            `;
+            if (isLast) {
+                card.onclick = () => openPlayer('S1:E24 "Explosão Final"');
+            }
+            sbrRow.appendChild(card);
+        }
+
+        // ------- player em vídeo local (mp4) -------
+        const videoEl = document.getElementById('videoEl');
+        const modal = document.getElementById('videoModal');
+        const overlay = document.getElementById('controlsOverlay');
+        const playPauseIcon = document.getElementById('playPauseIcon');
+        const progressFill = document.getElementById('progressFill');
+        const progressDot = document.getElementById('progressDot');
+        const timeRemaining = document.getElementById('timeRemaining');
+        const epTitleDisplay = document.getElementById('epTitleDisplay');
+        const epListTitle = document.getElementById('epListTitle');
+        const skipIntroBtn = document.getElementById('skipIntroBtn');
+        const skipEndingBtn = document.getElementById('skipEndingBtn');
+
+        const ICON_PLAY = '<path d="M8 5v14l11-7z"/>';
+        const ICON_PAUSE = '<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>';
+
+        const INTRO_END = 105;   // 1:45 — fim da abertura
+        const ENDING_START = 265; // 4:25 — início do encerramento
+
+        let isLocked = false;
+        let hideTimer = null;
+
+        function setIcon(playing) { playPauseIcon.innerHTML = playing ? ICON_PAUSE : ICON_PLAY; }
+
+        function openPlayer(title) {
+            epTitleDisplay.textContent = title;
+            epListTitle.textContent = title;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            overlay.classList.remove('playing-hidden');
+            overlay.classList.add('dimmed');
+            videoEl.currentTime = 0;
+            videoEl.play();
+        }
+
+        function closePlayer() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            clearTimeout(hideTimer);
+            videoEl.pause();
+            closeEpisodeList();
+        }
+
+        function togglePlay() {
+            if (videoEl.paused) videoEl.play(); else videoEl.pause();
+        }
+
+        function seekRelative(delta) {
+            videoEl.currentTime = Math.max(0, Math.min(videoEl.duration || 0, videoEl.currentTime + delta));
+            showControls();
+        }
+
+        function seekClick(evt) {
+            if (isLocked) return;
+            const bar = document.getElementById('progressBar');
+            const rect = bar.getBoundingClientRect();
+            const pct = Math.min(1, Math.max(0, (evt.clientX - rect.left) / rect.width));
+            videoEl.currentTime = pct * (videoEl.duration || 0);
+            evt.stopPropagation();
+        }
+
+        function skipIntro() { videoEl.currentTime = INTRO_END; showControls(); }
+        function skipEnding() { videoEl.currentTime = Math.max(0, (videoEl.duration || 0) - 0.3); showControls(); }
+
+        function formatTime(secs) {
+            secs = Math.max(0, Math.round(secs));
+            const m = Math.floor(secs / 60);
+            const s = secs % 60;
+            return m + ':' + String(s).padStart(2, '0');
+        }
+
+        videoEl.addEventListener('play', () => { setIcon(true); scheduleAutoHide(); });
+        videoEl.addEventListener('pause', () => { setIcon(false); showControls(); });
+
+        videoEl.addEventListener('timeupdate', () => {
+            const dur = videoEl.duration || 0;
+            const cur = videoEl.currentTime || 0;
+            if (dur > 0) {
+                const pct = (cur / dur) * 100;
+                progressFill.style.width = pct + '%';
+                progressDot.style.left = pct + '%';
+                timeRemaining.textContent = formatTime(dur - cur);
+            }
+            // Pular Abertura: visível enquanto ainda não passou dos 1:45
+            skipIntroBtn.classList.toggle('visible', cur < INTRO_END);
+            // Pular Encerramento: visível a partir dos 4:25
+            skipEndingBtn.classList.toggle('visible', cur >= ENDING_START && cur < dur - 1);
+        });
+
+        // ------- mostrar/ocultar controles -------
+        function handleOverlayTap() {
+            if (isLocked) return;
+            if (overlay.classList.contains('playing-hidden')) {
+                showControls();
+            } else {
+                togglePlay();
+            }
+        }
+
+        function showControls() {
+            overlay.classList.remove('playing-hidden');
+            overlay.classList.add('dimmed');
+            scheduleAutoHide();
+        }
+
+        function scheduleAutoHide() {
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(() => {
+                if (!videoEl.paused && !isLocked) {
+                    overlay.classList.add('playing-hidden');
+                    overlay.classList.remove('dimmed');
+                }
+            }, 3000);
+        }
+
+        function toggleLock() {
+            isLocked = !isLocked;
+            document.getElementById('lockLabel').textContent = isLocked ? 'Desbloquear' : 'Bloq. de tela';
+            if (isLocked) clearTimeout(hideTimer); else scheduleAutoHide();
+        }
+
+        function toggleEpisodeList() { document.getElementById('playerEpList').classList.toggle('open'); }
+        function closeEpisodeList() { document.getElementById('playerEpList').classList.remove('open'); }
+    </script>
+</body>
+</html>
