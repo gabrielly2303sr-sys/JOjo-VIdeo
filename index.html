@@ -1,24 +1,48 @@
 ```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en-US">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#020817">
 <meta name="color-scheme" content="dark">
-<meta name="description" content="GABI — 3D & 2D GFX Roblox Artist. Thumbnails, ícones, avatares e key art com identidade forte.">
-<meta property="og:title" content="GABI. — 3D & 2D Roblox GFX Studio">
-<meta property="og:description" content="Thumbnails, ícones, avatares e key art em 3D e 2D. Contato: Discord rekillx.">
-<meta property="og:image" content="https://media.discordapp.net/attachments/1551412217491103774/1551424441110765698/scroll_works.png?ex=6ab1ec1a&is=6ab09a9a&hm=081259183d76727d669ba60796fd9f35c0b5689b0d16b0a490042d4f02a92d5d&=&format=webp&quality=lossless">
+
+<meta
+  name="description"
+  content="GABI — 3D & 2D GFX Roblox Artist. Thumbnails, icons, profile pictures and key art with a strong visual identity."
+>
+
+<meta
+  property="og:title"
+  content="GABI. — 3D & 2D Roblox GFX Studio"
+>
+
+<meta
+  property="og:description"
+  content="Thumbnails, icons, profile pictures and key art in 3D and 2D. Contact: Discord rekillx."
+>
+
+<meta
+  property="og:image"
+  content="https://media.discordapp.net/attachments/1551412217491103774/1551424441110765698/scroll_works.png?ex=6ab1ec1a&is=6ab09a9a&hm=081259183d76727d669ba60796fd9f35c0b5689b0d16b0a490042d4f02a92d5d&=&format=webp&quality=lossless"
+>
+
 <title>GABI. — Roblox GFX Studio & Creative Agency</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-<link rel="preload" as="image"
-href="https://media.discordapp.net/attachments/1551412217491103774/1551424441110765698/scroll_works.png?ex=6ab1ec1a&is=6ab09a9a&hm=081259183d76727d669ba60796fd9f35c0b5689b0d16b0a490042d4f02a92d5d&=&format=webp&quality=lossless"
-fetchpriority="high">
+<link
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+>
+
+<link
+  rel="preload"
+  as="image"
+  href="https://media.discordapp.net/attachments/1551412217491103774/1551424441110765698/scroll_works.png?ex=6ab1ec1a&is=6ab09a9a&hm=081259183d76727d669ba60796fd9f35c0b5689b0d16b0a490042d4f02a92d5d&=&format=webp&quality=lossless"
+  fetchpriority="high"
+>
 
 <script>
 document.documentElement.classList.add('js');
@@ -31,6 +55,7 @@ document.documentElement.classList.add('js');
 
   --bg:#020817;
   --bg-dark:#01040d;
+
   --navy:#03122b;
   --navy-card:rgba(3,18,43,.82);
   --navy-glass:rgba(3,15,35,.78);
@@ -69,6 +94,7 @@ html{
 
 body{
   font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+
   background-color:var(--bg);
 
   background-image:
@@ -89,7 +115,9 @@ body{
   background-position:center;
 
   color:var(--text);
+
   overflow-x:hidden;
+
   line-height:1.5;
 
   -webkit-font-smoothing:antialiased;
@@ -139,6 +167,7 @@ header[id]{
   color:#000;
 
   padding:10px 16px;
+
   border-radius:999px;
 
   font-weight:700;
@@ -155,19 +184,24 @@ header[id]{
   position:absolute;
   width:1px;
   height:1px;
+
   overflow:hidden;
+
   clip:rect(0 0 0 0);
+
   white-space:nowrap;
 }
 
 /* =====================================================
-   HUD TECH BACKGROUND
+   TECH BACKGROUND
 ===================================================== */
 
 .tech-grid-bg{
   position:fixed;
   inset:0;
+
   pointer-events:none;
+
   z-index:-2;
 
   background-image:
@@ -184,67 +218,92 @@ header[id]{
   background-size:48px 48px;
 
   animation:gridMove 30s linear infinite;
+
   opacity:.7;
 }
 
 @keyframes gridMove{
   to{
-    background-position:48px 48px,48px 48px;
+    background-position:
+      48px 48px,
+      48px 48px;
   }
 }
 
 .glow-blobs{
   position:fixed;
   inset:0;
+
   pointer-events:none;
+
   z-index:-3;
+
   overflow:hidden;
 }
 
 .glow-blobs i{
   position:absolute;
+
   border-radius:50%;
+
   filter:blur(120px);
+
   opacity:.22;
+
   will-change:transform;
 }
 
 .glow-blobs .a{
   width:600px;
   height:600px;
+
   left:-100px;
   top:-100px;
+
   background:#00f0ff;
-  animation:float1 20s ease-in-out infinite alternate;
+
+  animation:
+    float1 20s ease-in-out infinite alternate;
 }
 
 .glow-blobs .b{
   width:550px;
   height:550px;
+
   right:-150px;
   top:30%;
+
   background:#0a84ff;
-  animation:float2 25s ease-in-out infinite alternate;
+
+  animation:
+    float2 25s ease-in-out infinite alternate;
 }
 
 .glow-blobs .c{
   width:650px;
   height:650px;
+
   left:20%;
   bottom:-200px;
+
   background:#03122b;
+
   opacity:.5;
 }
 
 @keyframes float1{
   to{
-    transform:translate3d(80px,60px,0) scale(1.1);
+    transform:
+      translate3d(80px,60px,0)
+      scale(1.1);
   }
 }
 
 @keyframes float2{
   to{
-    transform:translate3d(-90px,-50px,0) scale(1.15);
+    transform:
+      translate3d(-90px,-50px,0)
+      scale(1.15);
   }
 }
 
@@ -254,6 +313,7 @@ header[id]{
 
 .mouse-light{
   position:fixed;
+
   left:0;
   top:0;
 
@@ -263,6 +323,7 @@ header[id]{
   margin:-340px 0 0 -340px;
 
   z-index:-1;
+
   pointer-events:none;
 
   background:
@@ -273,7 +334,9 @@ header[id]{
     );
 
   opacity:0;
-  transition:opacity .5s;
+
+  transition:
+    opacity .5s;
 
   will-change:transform;
 }
@@ -287,19 +350,27 @@ body.cursor-on .mouse-light{
 ===================================================== */
 
 .glass{
-  background:var(--navy-glass);
+  background:
+    var(--navy-glass);
 
-  border:1px solid var(--stroke);
+  border:
+    1px solid var(--stroke);
 
-  -webkit-backdrop-filter:blur(24px) saturate(1.4);
-  backdrop-filter:blur(24px) saturate(1.4);
+  -webkit-backdrop-filter:
+    blur(24px)
+    saturate(1.4);
+
+  backdrop-filter:
+    blur(24px)
+    saturate(1.4);
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     0 24px 60px -20px rgba(0,0,0,.85),
     0 0 20px rgba(0,240,255,.04);
 
-  border-radius:var(--r-lg);
+  border-radius:
+    var(--r-lg);
 }
 
 [data-spot]{
@@ -310,6 +381,7 @@ body.cursor-on .mouse-light{
   content:"";
 
   position:absolute;
+
   inset:0;
 
   border-radius:inherit;
@@ -325,7 +397,8 @@ body.cursor-on .mouse-light{
 
   opacity:0;
 
-  transition:opacity .45s;
+  transition:
+    opacity .45s;
 }
 
 [data-spot]:hover::after{
@@ -340,9 +413,11 @@ body::before{
   content:"";
 
   position:fixed;
+
   inset:0;
 
   pointer-events:none;
+
   z-index:69;
 
   background:
@@ -363,13 +438,14 @@ body::before{
 }
 
 /* =====================================================
-   REVEAL / ANIMATIONS
+   REVEAL
 ===================================================== */
 
 .js [data-reveal]{
   opacity:0;
 
   translate:0 35px;
+
   scale:.98;
 
   transition:
@@ -399,7 +475,9 @@ body::before{
   display:inline-block;
 
   opacity:0;
+
   translate:0 .5em;
+
   filter:blur(12px);
 
   transition:
@@ -417,13 +495,17 @@ body::before{
 
 .js .in .c{
   opacity:1;
+
   translate:0 0;
+
   filter:none;
 }
 
 .sw{
   display:inline-block;
+
   opacity:.2;
+
   will-change:opacity;
 }
 
@@ -441,6 +523,7 @@ body::before{
   z-index:60;
 
   display:flex;
+
   justify-content:center;
 
   padding:0 16px;
@@ -452,30 +535,38 @@ body::before{
   pointer-events:auto;
 
   width:min(960px,100%);
+
   height:62px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 
   gap:16px;
 
-  padding:0 10px 0 24px;
+  padding:
+    0 10px 0 24px;
 
   border-radius:999px;
 
-  background:rgba(3,18,43,.85);
+  background:
+    rgba(3,18,43,.85);
 
-  border:1px solid var(--stroke-hi);
+  border:
+    1px solid var(--stroke-hi);
 
   box-shadow:
     0 20px 50px rgba(0,0,0,.9),
     0 0 25px rgba(0,240,255,.15);
 
   backdrop-filter:blur(20px);
+
   -webkit-backdrop-filter:blur(20px);
 
-  animation:navIn 1s var(--ease) .1s both;
+  animation:
+    navIn 1s var(--ease) .1s both;
 
   transition:
     background .3s,
@@ -484,9 +575,11 @@ body::before{
 }
 
 .nav.scrolled{
-  background:rgba(2,10,26,.95);
+  background:
+    rgba(2,10,26,.95);
 
-  border-color:var(--cyan);
+  border-color:
+    var(--cyan);
 
   box-shadow:
     0 20px 60px rgba(0,0,0,.95),
@@ -506,15 +599,22 @@ body::before{
 }
 
 .logo{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
+
   font-weight:700;
+
   font-size:20px;
+
   letter-spacing:-.03em;
 
   color:#fff;
 
   display:flex;
+
   align-items:center;
+
   gap:6px;
 }
 
@@ -524,7 +624,8 @@ body::before{
 
   border-radius:50%;
 
-  background:var(--cyan);
+  background:
+    var(--cyan);
 
   box-shadow:
     0 0 10px var(--cyan);
@@ -532,6 +633,7 @@ body::before{
 
 .links{
   display:flex;
+
   gap:4px;
 }
 
@@ -539,6 +641,7 @@ body::before{
   color:var(--text-2);
 
   font-size:14px;
+
   font-weight:600;
 
   padding:8px 16px;
@@ -559,7 +662,8 @@ body::before{
 }
 
 .links a.active{
-  color:var(--cyan);
+  color:
+    var(--cyan);
 
   background:
     rgba(0,240,255,.08);
@@ -570,10 +674,13 @@ body::before{
 
 .nav-cta{
   position:relative;
+
   overflow:hidden;
 
   display:inline-flex;
+
   align-items:center;
+
   justify-content:center;
 
   background:
@@ -586,6 +693,7 @@ body::before{
   color:#010816;
 
   font-size:13px;
+
   font-weight:800;
 
   letter-spacing:.03em;
@@ -600,7 +708,6 @@ body::before{
     0 0 20px rgba(0,240,255,.4);
 
   transition:
-    transform .3s var(--spring),
     scale .3s var(--spring),
     box-shadow .3s,
     translate .25s var(--ease);
@@ -624,14 +731,16 @@ body::before{
   }
 
   .nav{
-    padding:0 12px 0 18px;
+    padding:
+      0 12px 0 18px;
   }
 
   .links a{
-    padding:8px 10px;
+    padding:
+      8px 10px;
+
     font-size:13px;
   }
-
 }
 
 /* =====================================================
@@ -639,7 +748,9 @@ body::before{
 ===================================================== */
 
 .container{
-  width:min(1200px,calc(100% - 36px));
+  width:
+    min(1200px,calc(100% - 36px));
+
   margin:0 auto;
 }
 
@@ -656,6 +767,7 @@ body::before{
   flex-wrap:wrap;
 
   align-items:flex-end;
+
   justify-content:space-between;
 
   gap:24px 40px;
@@ -665,7 +777,9 @@ body::before{
 }
 
 .title{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:
     clamp(36px,5.5vw,68px);
@@ -701,16 +815,18 @@ body::before{
 }
 
 /* =====================================================
-   BUTTONS / RIPPLE
+   BUTTONS
 ===================================================== */
 
 .btn{
   position:relative;
+
   overflow:hidden;
 
   display:inline-flex;
 
   align-items:center;
+
   justify-content:center;
 
   gap:10px;
@@ -722,6 +838,7 @@ body::before{
   border-radius:999px;
 
   font-size:15px;
+
   font-weight:700;
 
   color:var(--text);
@@ -736,7 +853,8 @@ body::before{
     0 10px 30px rgba(0,0,0,.6),
     inset 0 1px 0 rgba(255,255,255,.1);
 
-  backdrop-filter:blur(20px);
+  backdrop-filter:
+    blur(20px);
 
   transition:
     background .3s,
@@ -793,6 +911,7 @@ body::before{
 
 [data-ripple]{
   position:relative;
+
   overflow:hidden;
 }
 
@@ -840,7 +959,7 @@ body::before{
 }
 
 /* =====================================================
-   JUICY PRESS FEEDBACK
+   MICRO PRESS
 ===================================================== */
 
 .btn,
@@ -865,6 +984,7 @@ body::before{
 }
 
 @keyframes microPress{
+
   0%{
     scale:1;
   }
@@ -880,6 +1000,7 @@ body::before{
   100%{
     scale:1;
   }
+
 }
 
 .carousel-card.is-pressing,
@@ -906,6 +1027,7 @@ body::before{
   100%{
     scale:1;
   }
+
 }
 
 /* =====================================================
@@ -937,7 +1059,8 @@ body::before{
 
   gap:10px;
 
-  padding:6px 16px 6px 12px;
+  padding:
+    6px 16px 6px 12px;
 
   border-radius:999px;
 
@@ -969,7 +1092,8 @@ body::before{
 
   border-radius:50%;
 
-  background:var(--cyan);
+  background:
+    var(--cyan);
 
   box-shadow:
     0 0 10px var(--cyan);
@@ -994,10 +1118,13 @@ body::before{
     box-shadow:
       0 0 0 0 rgba(0,240,255,0);
   }
+
 }
 
 .hero-title{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:
     clamp(42px,6.2vw,82px);
@@ -1035,11 +1162,12 @@ body::before{
 }
 
 /* =====================================================
-   HERO 3D CARD
+   HERO CARD
 ===================================================== */
 
 .hero-card-stage{
   position:relative;
+
   perspective:1200px;
 }
 
@@ -1073,7 +1201,8 @@ body::before{
 }
 
 .hero-3d-card:hover{
-  border-color:var(--cyan);
+  border-color:
+    var(--cyan);
 
   box-shadow:
     0 50px 120px -20px rgba(0,0,0,.98),
@@ -1108,8 +1237,6 @@ body::before{
     contrast(1.1);
 }
 
-/* Shine */
-
 .hero-3d-card::before{
   content:"";
 
@@ -1139,6 +1266,7 @@ body::before{
 
 .hero-3d-card:hover::before{
   translate:50% 0;
+
   opacity:1;
 }
 
@@ -1167,7 +1295,8 @@ body::before{
 
   color:var(--text);
 
-  backdrop-filter:blur(12px);
+  backdrop-filter:
+    blur(12px);
 
   box-shadow:
     0 10px 25px rgba(0,0,0,.6);
@@ -1190,7 +1319,8 @@ body::before{
 
   color:var(--cyan);
 
-  border-color:var(--cyan);
+  border-color:
+    var(--cyan);
 }
 
 @media(max-width:960px){
@@ -1266,7 +1396,9 @@ body::before{
 }
 
 .stat-num{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:
     clamp(38px,4vw,56px);
@@ -1375,12 +1507,13 @@ body::before{
 
 @keyframes marquee{
   to{
-    transform:translateX(-50%);
+    transform:
+      translateX(-50%);
   }
 }
 
 /* =====================================================
-   SEGMENTED CONTROLS
+   SEGMENT
 ===================================================== */
 
 .seg{
@@ -1392,18 +1525,21 @@ body::before{
 
   border-radius:999px;
 
-  background:var(--navy);
+  background:
+    var(--navy);
 
   border:
     1px solid var(--stroke-hi);
 
-  backdrop-filter:blur(20px);
+  backdrop-filter:
+    blur(20px);
 }
 
 .seg-thumb{
   position:absolute;
 
   left:0;
+
   top:4px;
   bottom:4px;
 
@@ -1440,7 +1576,8 @@ body::before{
 
   line-height:1;
 
-  padding:12px 22px;
+  padding:
+    12px 22px;
 
   border-radius:999px;
 
@@ -1459,7 +1596,7 @@ body::before{
 }
 
 /* =====================================================
-   CINEMATIC CAROUSEL
+   CAROUSEL
 ===================================================== */
 
 .carousel-wrapper{
@@ -1632,7 +1769,9 @@ body::before{
 }
 
 .card-overlay h3{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:
     clamp(22px,3vw,30px);
@@ -1658,7 +1797,8 @@ body::before{
   top:20px;
   left:20px;
 
-  padding:6px 14px;
+  padding:
+    6px 14px;
 
   border-radius:999px;
 
@@ -1766,7 +1906,9 @@ body::before{
 ===================================================== */
 
 .about-statement{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:
     clamp(26px,4.2vw,54px);
@@ -1829,11 +1971,14 @@ body::before{
   justify-content:center;
 
   position:relative;
+
   overflow:hidden;
 }
 
 .about-copy h3{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:
     clamp(28px,3vw,40px);
@@ -1957,6 +2102,7 @@ body::before{
     border-color .3s;
 
   position:relative;
+
   overflow:hidden;
 }
 
@@ -1992,7 +2138,9 @@ body::before{
 }
 
 .step h3{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:22px;
 
@@ -2143,7 +2291,9 @@ body::before{
 }
 
 .service h3{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:26px;
 
@@ -2171,7 +2321,9 @@ body::before{
 }
 
 .amt{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:40px;
 
@@ -2260,7 +2412,8 @@ body::before{
 
   border-radius:50%;
 
-  background:var(--cyan);
+  background:
+    var(--cyan);
 
   box-shadow:
     0 0 8px var(--cyan);
@@ -2339,7 +2492,8 @@ body::before{
   min-height:
     clamp(480px,50vw,600px);
 
-  border-radius:var(--r-xl);
+  border-radius:
+    var(--r-xl);
 
   border:
     1px solid var(--stroke-hi);
@@ -2469,7 +2623,9 @@ body::before{
 }
 
 .d-user{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:20px;
 
@@ -2489,7 +2645,8 @@ body::before{
 
   border-radius:999px;
 
-  background:var(--cyan);
+  background:
+    var(--cyan);
 
   color:#010816;
 
@@ -2514,7 +2671,8 @@ body::before{
 }
 
 .copy-btn.done{
-  background:#30d158;
+  background:
+    #30d158;
 
   color:#000;
 }
@@ -2524,7 +2682,8 @@ body::before{
   .discord-box{
     flex-wrap:wrap;
 
-    border-radius:var(--r-lg);
+    border-radius:
+      var(--r-lg);
   }
 
   .copy-btn{
@@ -2607,7 +2766,8 @@ body::before{
   background:
     rgba(1,4,13,.88);
 
-  backdrop-filter:blur(28px);
+  backdrop-filter:
+    blur(28px);
 }
 
 .lb-stage{
@@ -2618,7 +2778,8 @@ body::before{
   max-width:
     min(1000px,100%);
 
-  border-radius:var(--r-xl);
+  border-radius:
+    var(--r-xl);
 
   overflow:hidden;
 
@@ -2660,11 +2821,13 @@ body::before{
 
 .lightbox.swap .lb-stage img{
   opacity:0;
+
   scale:.98;
 }
 
 .lb-stage figcaption{
-  padding:24px 30px;
+  padding:
+    24px 30px;
 }
 
 .lb-stage .card-tag{
@@ -2674,7 +2837,9 @@ body::before{
 }
 
 .lb-stage h3{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:
+    'Space Grotesk',
+    sans-serif;
 
   font-size:24px;
 
@@ -2715,7 +2880,8 @@ body::before{
   background:
     rgba(3,18,43,.8);
 
-  backdrop-filter:blur(12px);
+  backdrop-filter:
+    blur(12px);
 
   transition:
     background .3s,
@@ -2851,13 +3017,15 @@ body.cursor-on button{
 
   z-index:120;
 
-  translate:-50% 40px;
+  translate:
+    -50% 40px;
 
   opacity:0;
 
   pointer-events:none;
 
-  padding:14px 24px;
+  padding:
+    14px 24px;
 
   border-radius:999px;
 
@@ -2884,7 +3052,8 @@ body.cursor-on button{
 .toast.show{
   opacity:1;
 
-  translate:-50% 0;
+  translate:
+    -50% 0;
 }
 
 /* =====================================================
@@ -2901,8 +3070,11 @@ body.cursor-on button{
   *::before,
   *::after{
     animation-duration:.01ms!important;
+
     animation-iteration-count:1!important;
+
     transition-duration:.01ms!important;
+
     transition-delay:0s!important;
   }
 
@@ -2924,16 +3096,23 @@ body.cursor-on button{
 
 <body>
 
-<a class="skip" href="#work">
-  Ir para o conteúdo
+<a
+  class="skip"
+  href="#work"
+>
+  Skip to content
 </a>
 
 <div class="tech-grid-bg"></div>
 
-<div class="glow-blobs" aria-hidden="true">
+<div
+  class="glow-blobs"
+  aria-hidden="true">
+
   <i class="a"></i>
   <i class="b"></i>
   <i class="c"></i>
+
 </div>
 
 <div
@@ -2950,7 +3129,9 @@ body.cursor-on button{
 <div
   id="cursor"
   aria-hidden="true">
+
   <i></i>
+
 </div>
 
 <div
@@ -2974,7 +3155,7 @@ body.cursor-on button{
   <nav
     class="nav"
     id="nav"
-    aria-label="Navegação Principal">
+    aria-label="Main Navigation">
 
     <a
       class="logo"
@@ -3011,7 +3192,7 @@ body.cursor-on button{
       href="#contact"
       data-ripple>
 
-      Let's talk
+      Let's Talk
 
     </a>
 
@@ -3061,8 +3242,8 @@ body.cursor-on button{
         style="--d:.3s">
 
         3D &amp; 2D GFX artist.
-        Thumbnails, ícones, avatares e key art
-        com identidade forte — feitos pra serem notados.
+        Thumbnails, icons, profile pictures and key art
+        with a strong visual identity — made to stand out.
 
       </p>
 
@@ -3076,7 +3257,7 @@ body.cursor-on button{
           href="#work"
           data-ripple>
 
-          See my work
+          See My Work
 
         </a>
 
@@ -3085,15 +3266,13 @@ body.cursor-on button{
           href="#contact"
           data-ripple>
 
-          Hire me
+          Hire Me
 
         </a>
 
       </div>
 
     </div>
-
-    <!-- HERO 3D CARD -->
 
     <div
       class="hero-card-stage"
@@ -3106,8 +3285,9 @@ body.cursor-on button{
 
         <img
           src="https://killxgfx.netlify.app/hero-killx.png"
-          alt="GABI GFX Showcase Hero Artwork"
-          fetchpriority="high">
+          alt="GABI GFX showcase artwork"
+          fetchpriority="high"
+        >
 
         <div class="hud-tag top-left">
 
@@ -3142,6 +3322,7 @@ body.cursor-on button{
     <div
       class="stat-card"
       data-reveal
+      data-spot
       style="--d:.1s">
 
       <div
@@ -3154,7 +3335,7 @@ body.cursor-on button{
       </div>
 
       <div class="stat-label">
-        Anos de Experiência
+        Years of Experience
       </div>
 
     </div>
@@ -3162,6 +3343,7 @@ body.cursor-on button{
     <div
       class="stat-card"
       data-reveal
+      data-spot
       style="--d:.2s">
 
       <div
@@ -3174,7 +3356,7 @@ body.cursor-on button{
       </div>
 
       <div class="stat-label">
-        Commissions Entregues
+        Commissions Delivered
       </div>
 
     </div>
@@ -3182,6 +3364,7 @@ body.cursor-on button{
     <div
       class="stat-card"
       data-reveal
+      data-spot
       style="--d:.3s">
 
       <div class="stat-num">
@@ -3189,7 +3372,7 @@ body.cursor-on button{
       </div>
 
       <div class="stat-label">
-        Prazo Médio de Entrega
+        Average Turnaround
       </div>
 
     </div>
@@ -3197,6 +3380,7 @@ body.cursor-on button{
     <div
       class="stat-card"
       data-reveal
+      data-spot
       style="--d:.4s">
 
       <div
@@ -3208,7 +3392,7 @@ body.cursor-on button{
       </div>
 
       <div class="stat-label">
-        Qualidade &amp; Impacto
+        Quality &amp; Impact
       </div>
 
     </div>
@@ -3233,7 +3417,7 @@ body.cursor-on button{
     <span>Icons</span>
     <i class="sep"></i>
 
-    <span>Profile Pics</span>
+    <span>Profile Pictures</span>
     <i class="sep"></i>
 
     <span>2D Illustration</span>
@@ -3254,7 +3438,7 @@ body.cursor-on button{
     <span>Icons</span>
     <i class="sep"></i>
 
-    <span>Profile Pics</span>
+    <span>Profile Pictures</span>
     <i class="sep"></i>
 
     <span>2D Illustration</span>
@@ -3289,7 +3473,7 @@ body.cursor-on button{
         class="title"
         data-split="words">
 
-        Selected work
+        Selected Work
 
       </h2>
 
@@ -3297,8 +3481,8 @@ body.cursor-on button{
         class="sub"
         data-reveal="blur">
 
-        Apresentação cinematográfica do portfólio.
-        Use as setas ou clique nas peças.
+        A cinematic presentation of my portfolio.
+        Use the arrows or click any piece to explore.
 
       </p>
 
@@ -3308,7 +3492,7 @@ body.cursor-on button{
       class="seg"
       id="filter"
       role="group"
-      aria-label="Filter work"
+      aria-label="Work Filter"
       data-reveal>
 
       <span class="seg-thumb"></span>
@@ -3355,8 +3539,6 @@ body.cursor-on button{
       class="carousel-stage"
       id="carouselStage">
 
-      <!-- CARD 1 -->
-
       <article
         class="carousel-card"
         data-cat="3d"
@@ -3365,7 +3547,9 @@ body.cursor-on button{
 
         <img
           src="https://killxgfx.netlify.app/project-1.png"
-          alt="3D Thumbnails">
+          alt="3D thumbnails"
+          loading="lazy"
+        >
 
         <span class="card-tag">
           3D GFX
@@ -3378,15 +3562,13 @@ body.cursor-on button{
           </h3>
 
           <p>
-            Cenas em 3D com composição feita
-            pra ser notada e clicada no Roblox.
+            3D scenes composed to stand out
+            and earn clicks on Roblox.
           </p>
 
         </div>
 
       </article>
-
-      <!-- CARD 2 -->
 
       <article
         class="carousel-card"
@@ -3396,7 +3578,9 @@ body.cursor-on button{
 
         <img
           src="https://killxgfx.netlify.app/project-2.png"
-          alt="Icons & Profile Pics">
+          alt="3D icons and profile pictures"
+          loading="lazy"
+        >
 
         <span class="card-tag">
           3D GFX
@@ -3405,19 +3589,17 @@ body.cursor-on button{
         <div class="card-overlay">
 
           <h3>
-            Icons &amp; Profile Pics
+            Icons &amp; Profile Pictures
           </h3>
 
           <p>
-            Ícones e avatares limpos,
-            prontos pra jogos, YouTube e Discord.
+            Clean icons and avatars ready
+            for games, YouTube and Discord.
           </p>
 
         </div>
 
       </article>
-
-      <!-- CARD 3 -->
 
       <article
         class="carousel-card"
@@ -3427,7 +3609,9 @@ body.cursor-on button{
 
         <img
           src="https://killxgfx.netlify.app/project-3.png"
-          alt="2D Illustration">
+          alt="2D illustration"
+          loading="lazy"
+        >
 
         <span class="card-tag">
           2D ART
@@ -3440,15 +3624,13 @@ body.cursor-on button{
           </h3>
 
           <p>
-            Arte desenhada com personalidade:
-            personagens, capas e key art.
+            Hand-crafted artwork with personality:
+            characters, covers and key art.
           </p>
 
         </div>
 
       </article>
-
-      <!-- CARD 4 -->
 
       <article
         class="carousel-card"
@@ -3458,7 +3640,9 @@ body.cursor-on button{
 
         <img
           src="https://killxgfx.netlify.app/project-4.png"
-          alt="Banners & Custom">
+          alt="2D banners and custom artwork"
+          loading="lazy"
+        >
 
         <span class="card-tag">
           2D ART
@@ -3471,8 +3655,8 @@ body.cursor-on button{
           </h3>
 
           <p>
-            Projetos maiores sob medida:
-            banners, key art e artes para jogos.
+            Larger custom projects:
+            banners, key art and game artwork.
           </p>
 
         </div>
@@ -3486,7 +3670,7 @@ body.cursor-on button{
       <button
         class="nav-arrow"
         id="prevBtn"
-        aria-label="Projeto anterior"
+        aria-label="Previous project"
         data-ripple>
 
         <svg
@@ -3511,7 +3695,7 @@ body.cursor-on button{
       <button
         class="nav-arrow"
         id="nextBtn"
-        aria-label="Próximo projeto"
+        aria-label="Next project"
         data-ripple>
 
         <svg
@@ -3561,8 +3745,9 @@ body.cursor-on button{
 
       <img
         src="https://killxgfx.netlify.app/about-killx.png"
-        alt="Retrato artístico — sobre mim"
-        loading="lazy">
+        alt="Artistic portrait — about me"
+        loading="lazy"
+      >
 
     </div>
 
@@ -3577,19 +3762,18 @@ body.cursor-on button{
       </h3>
 
       <p>
-        Eu crio visuais em 3D e 2D —
-        thumbnails, ícones, avatares,
-        banners e key art —
-        com foco em alto impacto visual
-        e identidade marcante.
+        I create 3D and 2D visuals —
+        thumbnails, icons, profile pictures,
+        banners and key art —
+        with a focus on visual impact
+        and a strong identity.
       </p>
 
       <p>
-        Cada trabalho parte do seu brief:
-        referências, paleta e o objetivo da imagem.
-        O resto é composição,
-        iluminação cinematográfica
-        e pós-produção avançada.
+        Every project starts with your brief:
+        references, palette and the goal of the image.
+        From there, it's composition,
+        cinematic lighting and advanced post-production.
       </p>
 
       <div class="pills">
@@ -3611,7 +3795,7 @@ body.cursor-on button{
         </span>
 
         <span class="pill">
-          Profile Pics
+          Profile Pictures
         </span>
 
         <span class="pill">
@@ -3622,9 +3806,9 @@ body.cursor-on button{
 
       <div class="note">
 
-        Thumbnails focadas em CTR,
-        GFX com identidade única
-        e 2D de alta personalidade.
+        Thumbnails focused on CTR,
+        unique GFX identity and
+        high-personality 2D artwork.
 
       </div>
 
@@ -3650,7 +3834,7 @@ body.cursor-on button{
         class="title"
         data-split="words">
 
-        How it works
+        How It Works
 
       </h2>
 
@@ -3658,8 +3842,8 @@ body.cursor-on button{
         class="sub"
         data-reveal="blur">
 
-        Do brief à entrega final em
-        4 passos simples.
+        From brief to final delivery
+        in 4 simple steps.
 
       </p>
 
@@ -3684,8 +3868,8 @@ body.cursor-on button{
       </h3>
 
       <p>
-        Você envia as referências,
-        textos, ideias e o conceito do projeto.
+        Send your references, text,
+        ideas and overall project concept.
       </p>
 
     </article>
@@ -3705,8 +3889,8 @@ body.cursor-on button{
       </h3>
 
       <p>
-        Monto o rascunho da composição
-        3D/2D para aprovação inicial.
+        I build the initial 3D/2D composition
+        for your first approval.
       </p>
 
     </article>
@@ -3726,9 +3910,8 @@ body.cursor-on button{
       </h3>
 
       <p>
-        Ajustes em iluminação,
-        cores e detalhes.
-        1 rodada inclusa.
+        Adjustments to lighting, colors
+        and details. One revision included.
       </p>
 
     </article>
@@ -3748,8 +3931,8 @@ body.cursor-on button{
       </h3>
 
       <p>
-        Arquivos finais em altíssima
-        resolução prontos pra publicação.
+        Final high-resolution files
+        ready for publishing.
       </p>
 
     </article>
@@ -3782,8 +3965,8 @@ body.cursor-on button{
         class="sub"
         data-reveal="blur">
 
-        Valores de referência.
-        Entre em contato para orçamentos customizados.
+        Reference pricing.
+        Contact me for custom quotes.
 
       </p>
 
@@ -3793,7 +3976,7 @@ body.cursor-on button{
       class="seg"
       id="serviceTabs"
       role="group"
-      aria-label="Service type"
+      aria-label="Service Type"
       data-reveal>
 
       <span class="seg-thumb"></span>
@@ -3826,7 +4009,7 @@ body.cursor-on button{
     id="panels"
     data-reveal>
 
-    <!-- 3D -->
+    <!-- 3D / GFX -->
 
     <div
       class="service-grid"
@@ -3846,10 +4029,37 @@ body.cursor-on button{
             stroke="currentColor"
             stroke-width="2">
 
-            <rect x="3" y="3" width="7" height="7" rx="2"/>
-            <rect x="14" y="3" width="7" height="7" rx="2"/>
-            <rect x="3" y="14" width="7" height="7" rx="2"/>
-            <rect x="14" y="14" width="7" height="7" rx="2"/>
+            <rect
+              x="3"
+              y="3"
+              width="7"
+              height="7"
+              rx="2"
+            />
+
+            <rect
+              x="14"
+              y="3"
+              width="7"
+              height="7"
+              rx="2"
+            />
+
+            <rect
+              x="3"
+              y="14"
+              width="7"
+              height="7"
+              rx="2"
+            />
+
+            <rect
+              x="14"
+              y="14"
+              width="7"
+              height="7"
+              rx="2"
+            />
 
           </svg>
 
@@ -3860,7 +4070,7 @@ body.cursor-on button{
         </h3>
 
         <p class="s-desc">
-          Clean icons para jogos Roblox.
+          Clean icons for Roblox games.
         </p>
 
         <div class="s-price">
@@ -3875,20 +4085,20 @@ body.cursor-on button{
           </span>
 
           <span class="per">
-            robux
+            Robux
           </span>
 
         </div>
 
         <div class="alt">
-          ou $15 USD
+          or $15 USD
         </div>
 
         <ul>
 
-          <li>1 rodada de revisão</li>
-          <li>Export HD</li>
-          <li>Entrega em 24–72h</li>
+          <li>1 revision round</li>
+          <li>HD export</li>
+          <li>24–72h delivery</li>
 
         </ul>
 
@@ -3897,7 +4107,7 @@ body.cursor-on button{
           href="#contact"
           data-ripple>
 
-          Order this
+          Order This
 
         </a>
 
@@ -3917,9 +4127,23 @@ body.cursor-on button{
             stroke="currentColor"
             stroke-width="2">
 
-            <rect x="3" y="5" width="18" height="14" rx="3"/>
-            <path d="M3 16l5-4 4 3 3-2 6 5"/>
-            <circle cx="16.5" cy="9.5" r="1.3"/>
+            <rect
+              x="3"
+              y="5"
+              width="18"
+              height="14"
+              rx="3"
+            />
+
+            <path
+              d="M3 16l5-4 4 3 3-2 6 5"
+            />
+
+            <circle
+              cx="16.5"
+              cy="9.5"
+              r="1.3"
+            />
 
           </svg>
 
@@ -3930,7 +4154,7 @@ body.cursor-on button{
         </h3>
 
         <p class="s-desc">
-          Thumbnails atrativas para jogos.
+          Eye-catching thumbnails for games.
         </p>
 
         <div class="s-price">
@@ -3945,20 +4169,20 @@ body.cursor-on button{
           </span>
 
           <span class="per">
-            robux
+            Robux
           </span>
 
         </div>
 
         <div class="alt">
-          ou $25+ USD
+          or $25+ USD
         </div>
 
         <ul>
 
-          <li>Composição focada em CTR</li>
-          <li>1 rodada de revisão</li>
-          <li>Entrega em 24–48h</li>
+          <li>CTR-focused composition</li>
+          <li>1 revision round</li>
+          <li>24–48h delivery</li>
 
         </ul>
 
@@ -3967,7 +4191,7 @@ body.cursor-on button{
           href="#contact"
           data-ripple>
 
-          Order this
+          Order This
 
         </a>
 
@@ -3987,19 +4211,26 @@ body.cursor-on button{
             stroke="currentColor"
             stroke-width="2">
 
-            <circle cx="12" cy="8" r="4"/>
-            <path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>
+            <circle
+              cx="12"
+              cy="8"
+              r="4"
+            />
+
+            <path
+              d="M4 21c0-4 4-6 8-6s8 2 8 6"
+            />
 
           </svg>
 
         </div>
 
         <h3>
-          Profile Pics
+          Profile Pictures
         </h3>
 
         <p class="s-desc">
-          Avatares para YouTube ou Discord.
+          Avatars for YouTube or Discord.
         </p>
 
         <div class="s-price">
@@ -4014,20 +4245,20 @@ body.cursor-on button{
           </span>
 
           <span class="per">
-            robux
+            Robux
           </span>
 
         </div>
 
         <div class="alt">
-          ou $10+ USD
+          or $10+ USD
         </div>
 
         <ul>
 
-          <li>Iluminação customizada</li>
-          <li>1 rodada de revisão</li>
-          <li>Entrega em 24–72h</li>
+          <li>Custom lighting</li>
+          <li>1 revision round</li>
+          <li>24–72h delivery</li>
 
         </ul>
 
@@ -4036,7 +4267,7 @@ body.cursor-on button{
           href="#contact"
           data-ripple>
 
-          Order this
+          Order This
 
         </a>
 
@@ -4065,8 +4296,13 @@ body.cursor-on button{
             stroke="currentColor"
             stroke-width="2">
 
-            <path d="M4 20l4-1L19 8a2.1 2.1 0 00-3-3L5 16l-1 4z"/>
-            <path d="M14 6l4 4"/>
+            <path
+              d="M4 20l4-1L19 8a2.1 2.1 0 00-3-3L5 16l-1 4z"
+            />
+
+            <path
+              d="M14 6l4 4"
+            />
 
           </svg>
 
@@ -4077,7 +4313,7 @@ body.cursor-on button{
         </h3>
 
         <p class="s-desc">
-          Ícones desenhados sob medida.
+          Custom-drawn icons made for your style.
         </p>
 
         <div class="s-price">
@@ -4092,20 +4328,20 @@ body.cursor-on button{
           </span>
 
           <span class="per">
-            robux
+            Robux
           </span>
 
         </div>
 
         <div class="alt">
-          ou $40+ USD
+          or $40+ USD
         </div>
 
         <ul>
 
-          <li>Estilo exclusivo</li>
-          <li>Export para Roblox UI</li>
-          <li>Entrega em 48–96h</li>
+          <li>Exclusive style</li>
+          <li>Roblox UI export</li>
+          <li>48–96h delivery</li>
 
         </ul>
 
@@ -4114,7 +4350,7 @@ body.cursor-on button{
           href="#contact"
           data-ripple>
 
-          Order this
+          Order This
 
         </a>
 
@@ -4134,7 +4370,9 @@ body.cursor-on button{
             stroke="currentColor"
             stroke-width="2">
 
-            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/>
+            <path
+              d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"
+            />
 
           </svg>
 
@@ -4145,7 +4383,7 @@ body.cursor-on button{
         </h3>
 
         <p class="s-desc">
-          Thumbnails ilustradas e pintadas.
+          Illustrated and painted thumbnails.
         </p>
 
         <div class="s-price">
@@ -4160,20 +4398,20 @@ body.cursor-on button{
           </span>
 
           <span class="per">
-            robux
+            Robux
           </span>
 
         </div>
 
         <div class="alt">
-          ou $60+ USD
+          or $60+ USD
         </div>
 
         <ul>
 
-          <li>Composição de alto valor</li>
-          <li>1–2 revisões</li>
-          <li>Entrega em 48–96h</li>
+          <li>High-impact composition</li>
+          <li>1–2 revisions</li>
+          <li>48–96h delivery</li>
 
         </ul>
 
@@ -4182,7 +4420,7 @@ body.cursor-on button{
           href="#contact"
           data-ripple>
 
-          Order this
+          Order This
 
         </a>
 
@@ -4202,8 +4440,13 @@ body.cursor-on button{
             stroke="currentColor"
             stroke-width="2">
 
-            <path d="M12 5v14"/>
-            <path d="M5 12h14"/>
+            <path
+              d="M12 5v14"
+            />
+
+            <path
+              d="M5 12h14"
+            />
 
           </svg>
 
@@ -4214,7 +4457,7 @@ body.cursor-on button{
         </h3>
 
         <p class="s-desc">
-          Banners, key art e projetos grandes.
+          Banners, key art and larger projects.
         </p>
 
         <div class="s-price">
@@ -4226,14 +4469,14 @@ body.cursor-on button{
         </div>
 
         <div class="alt">
-          Orçamento mediante projeto
+          Quote based on project scope
         </div>
 
         <ul>
 
-          <li>Escopo sob medida</li>
-          <li>Acompanhamento direto</li>
-          <li>Prazo combinado</li>
+          <li>Custom scope</li>
+          <li>Direct communication</li>
+          <li>Agreed turnaround</li>
 
         </ul>
 
@@ -4242,7 +4485,7 @@ body.cursor-on button{
           href="#contact"
           data-ripple>
 
-          Ask for a quote
+          Request a Quote
 
         </a>
 
@@ -4269,8 +4512,9 @@ body.cursor-on button{
     <img
       class="cta-bg"
       src="https://killxgfx.netlify.app/commision.png"
-      alt="Commission Background"
-      loading="lazy">
+      alt="Commission artwork background"
+      loading="lazy"
+    >
 
     <div class="cta-shade"></div>
 
@@ -4280,7 +4524,7 @@ body.cursor-on button{
         class="title"
         data-split="words">
 
-        Make it look expensive.
+        Make It Look Expensive.
 
       </h2>
 
@@ -4288,9 +4532,9 @@ body.cursor-on button{
         class="sub"
         data-reveal="blur">
 
-        Me chama no Discord informando
-        o tipo de arte, referências e prazo desejado.
-        Respondo com uma estimativa rapidamente.
+        Message me on Discord with the type of artwork,
+        references and deadline you have in mind.
+        I'll reply with an estimate quickly.
 
       </p>
 
@@ -4310,7 +4554,9 @@ body.cursor-on button{
             stroke="currentColor"
             stroke-width="2">
 
-            <path d="M4 5h16a2 2 0 012 2v9a2 2 0 01-2 2H10l-5 3.5V18H4a2 2 0 01-2-2V7a2 2 0 012-2z"/>
+            <path
+              d="M4 5h16a2 2 0 012 2v9a2 2 0 01-2 2H10l-5 3.5V18H4a2 2 0 01-2-2V7a2 2 0 012-2z"
+            />
 
           </svg>
 
@@ -4335,7 +4581,7 @@ body.cursor-on button{
           data-ripple>
 
           <span>
-            Copy username
+            Copy Username
           </span>
 
         </button>
@@ -4367,7 +4613,7 @@ body.cursor-on button{
     </span>
 
     <a href="#top">
-      Back to top
+      Back to Top
     </a>
 
   </div>
@@ -4383,6 +4629,7 @@ body.cursor-on button{
   id="lightbox"
   role="dialog"
   aria-modal="true"
+  aria-label="Artwork Preview"
   hidden>
 
   <div
@@ -4394,7 +4641,8 @@ body.cursor-on button{
 
     <img
       id="lbImg"
-      alt="">
+      alt=""
+    >
 
     <figcaption>
 
@@ -4416,7 +4664,7 @@ body.cursor-on button{
   <button
     class="lb-btn lb-close"
     type="button"
-    aria-label="Close"
+    aria-label="Close preview"
     data-close>
 
     <svg
@@ -4449,14 +4697,20 @@ body.cursor-on button{
    HELPERS
 ===================================================== */
 
-const $ = (s, r = document) =>
-  r.querySelector(s);
+const $ =
+  (s,r=document) =>
+    r.querySelector(s);
 
-const $$ = (s, r = document) =>
-  [...r.querySelectorAll(s)];
+const $$ =
+  (s,r=document) =>
+    [...r.querySelectorAll(s)];
 
-const clamp = (v,a,b) =>
-  Math.min(b,Math.max(a,v));
+const clamp =
+  (v,a,b) =>
+    Math.min(
+      b,
+      Math.max(a,v)
+    );
 
 const reduce =
   matchMedia(
@@ -4479,10 +4733,11 @@ function splitEl(el,mode){
 
   const label =
     nodes
-      .map(n =>
-        n.nodeName === 'BR'
-          ? ' '
-          : n.textContent
+      .map(
+        n =>
+          n.nodeName === 'BR'
+            ? ' '
+            : n.textContent
       )
       .join('')
       .replace(/\s+/g,' ')
@@ -4494,6 +4749,7 @@ function splitEl(el,mode){
     document.createElement('span');
 
   sr.className='sr';
+
   sr.textContent=label;
 
   const wrap =
@@ -4504,7 +4760,10 @@ function splitEl(el,mode){
     'true'
   );
 
-  el.append(sr,wrap);
+  el.append(
+    sr,
+    wrap
+  );
 
   let idx=0;
 
@@ -4523,7 +4782,8 @@ function splitEl(el,mode){
       .split(/(\s+)/)
       .forEach(part => {
 
-        if(!part) return;
+        if(!part)
+          return;
 
         if(/^\s+$/.test(part)){
 
@@ -4547,6 +4807,7 @@ function splitEl(el,mode){
               document.createElement('span');
 
             c.className='c';
+
             c.textContent=ch;
 
             c.style.setProperty(
@@ -4580,6 +4841,7 @@ function splitEl(el,mode){
           }
 
           w.appendChild(c);
+
         }
 
         wrap.appendChild(w);
@@ -4591,11 +4853,12 @@ function splitEl(el,mode){
 }
 
 $$('[data-split]')
-  .forEach(el =>
-    splitEl(
-      el,
-      el.dataset.split
-    )
+  .forEach(
+    el =>
+      splitEl(
+        el,
+        el.dataset.split
+      )
   );
 
 /* =====================================================
@@ -4606,32 +4869,39 @@ const io =
   new IntersectionObserver(
     entries => {
 
-      entries.forEach(e => {
+      entries.forEach(
+        e => {
 
-        if(e.isIntersecting){
+          if(e.isIntersecting){
 
-          e.target.classList.add('in');
+            e.target.classList.add('in');
 
-          io.unobserve(e.target);
+            io.unobserve(e.target);
+
+          }
+
         }
-
-      });
+      );
 
     },
     {
       threshold:.1,
+
       rootMargin:
         '0px 0px -5% 0px'
     }
   );
 
-$$('[data-reveal],[data-split]')
-  .forEach(el =>
+$$(
+  '[data-reveal],[data-split]'
+)
+.forEach(
+  el =>
     io.observe(el)
-  );
+);
 
 /* =====================================================
-   CURSOR + MOUSE LIGHT
+   CURSOR
 ===================================================== */
 
 const cursor =
@@ -4644,10 +4914,10 @@ const light =
   $('#mouseLight');
 
 let mx =
-  innerWidth / 2;
+  innerWidth/2;
 
 let my =
-  innerHeight / 2;
+  innerHeight/2;
 
 let cx =
   mx;
@@ -4665,10 +4935,14 @@ if(fine){
     'pointermove',
     e => {
 
-      if(e.pointerType === 'touch')
+      if(
+        e.pointerType ===
+        'touch'
+      )
         return;
 
       mx=e.clientX;
+
       my=e.clientY;
 
       document.documentElement.style.setProperty(
@@ -4750,43 +5024,47 @@ if(fine){
       cursor.classList.remove('down')
   );
 
-  (function loop(){
+  (
+    function loop(){
 
-    cx +=
-      (mx-cx)*.2;
+      cx +=
+        (mx-cx)*.2;
 
-    cy +=
-      (my-cy)*.2;
+      cy +=
+        (my-cy)*.2;
 
-    cursor.style.transform =
-      `translate3d(
-        ${cx.toFixed(1)}px,
-        ${cy.toFixed(1)}px,
-        0
-      )`;
+      cursor.style.transform =
+        `translate3d(
+          ${cx.toFixed(1)}px,
+          ${cy.toFixed(1)}px,
+          0
+        )`;
 
-    dot.style.transform =
-      `translate3d(
-        ${mx}px,
-        ${my}px,
-        0
-      )`;
+      dot.style.transform =
+        `translate3d(
+          ${mx}px,
+          ${my}px,
+          0
+        )`;
 
-    light.style.transform =
-      `translate3d(
-        ${cx.toFixed(0)}px,
-        ${cy.toFixed(0)}px,
-        0
-      )`;
+      light.style.transform =
+        `translate3d(
+          ${cx.toFixed(0)}px,
+          ${cy.toFixed(0)}px,
+          0
+        )`;
 
-    requestAnimationFrame(loop);
+      requestAnimationFrame(
+        loop
+      );
 
-  })();
+    }
+  )();
 
 }
 
 /* =====================================================
-   JUICY MICRO INTERACTIONS
+   MICRO INTERACTIONS
 ===================================================== */
 
 const pressables =
@@ -4794,45 +5072,47 @@ const pressables =
     '[data-ripple],.carousel-card,.service,.stat-card,.lb-btn,.nav-arrow'
   );
 
-pressables.forEach(el => {
+pressables.forEach(
+  el => {
 
-  const press =
-    () =>
-      el.classList.add(
-        'is-pressing'
-      );
+    const press =
+      () =>
+        el.classList.add(
+          'is-pressing'
+        );
 
-  const release =
-    () =>
-      el.classList.remove(
-        'is-pressing'
-      );
-
-  el.addEventListener(
-    'pointerdown',
-    press,
-    {
-      passive:true
-    }
-  );
-
-  [
-    'pointerup',
-    'pointercancel',
-    'pointerleave'
-  ].forEach(type => {
+    const release =
+      () =>
+        el.classList.remove(
+          'is-pressing'
+        );
 
     el.addEventListener(
-      type,
-      release,
+      'pointerdown',
+      press,
       {
         passive:true
       }
     );
 
-  });
+    [
+      'pointerup',
+      'pointercancel',
+      'pointerleave'
+    ]
+    .forEach(
+      type =>
+        el.addEventListener(
+          type,
+          release,
+          {
+            passive:true
+          }
+        )
+    );
 
-});
+  }
+);
 
 /* =====================================================
    SPOTLIGHT
@@ -4848,7 +5128,8 @@ document.addEventListener(
         '[data-spot]'
       );
 
-    if(!el) return;
+    if(!el)
+      return;
 
     const r =
       el.getBoundingClientRect();
@@ -4873,101 +5154,112 @@ document.addEventListener(
    CARD TILT
 ===================================================== */
 
-if(fine && !reduce){
+if(
+  fine &&
+  !reduce
+){
 
   $$('.carousel-card,.service,.stat-card')
-    .forEach(card => {
+    .forEach(
+      card => {
 
-      card.addEventListener(
-        'pointermove',
-        e => {
+        card.addEventListener(
+          'pointermove',
+          e => {
 
-          const r =
-            card.getBoundingClientRect();
+            const r =
+              card.getBoundingClientRect();
 
-          const x =
-            (e.clientX-r.left) /
+            const x =
+              (
+                e.clientX-r.left
+              ) /
               r.width -
-            .5;
+              .5;
 
-          const y =
-            (e.clientY-r.top) /
+            const y =
+              (
+                e.clientY-r.top
+              ) /
               r.height -
-            .5;
+              .5;
 
-          const amount =
-            card.classList.contains(
-              'carousel-card'
-            )
+            const amount =
+              card.classList.contains(
+                'carousel-card'
+              )
               ? 3.5
               : 4;
 
-          card.style.transform =
-            `perspective(1100px)
-             rotateX(${(
-               -y*amount
-             ).toFixed(2)}deg)
-             rotateY(${(
-               x*amount
-             ).toFixed(2)}deg)
-             translateY(-4px)`;
+            card.style.transform =
+              `perspective(1100px)
+               rotateX(${(
+                 -y*amount
+               ).toFixed(2)}deg)
+               rotateY(${(
+                 x*amount
+               ).toFixed(2)}deg)
+               translateY(-4px)`;
 
-        }
-      );
+          }
+        );
 
-      card.addEventListener(
-        'pointerleave',
-        () => {
+        card.addEventListener(
+          'pointerleave',
+          () => {
 
-          card.style.transform='';
+            card.style.transform='';
 
-        }
-      );
+          }
+        );
 
-    });
+      }
+    );
 
-  /* Magnetic */
+  /* Magnetic buttons */
 
   $$('.btn,.nav-cta,.copy-btn')
-    .forEach(button => {
+    .forEach(
+      button => {
 
-      button.addEventListener(
-        'pointermove',
-        e => {
+        button.addEventListener(
+          'pointermove',
+          e => {
 
-          const r =
-            button.getBoundingClientRect();
+            const r =
+              button.getBoundingClientRect();
 
-          const dx =
-            (
-              e.clientX -
-              r.left -
-              r.width/2
-            )*.14;
+            const dx =
+              (
+                e.clientX -
+                r.left -
+                r.width/2
+              )*.14;
 
-          const dy =
-            (
-              e.clientY -
-              r.top -
-              r.height/2
-            )*.20;
+            const dy =
+              (
+                e.clientY -
+                r.top -
+                r.height/2
+              )*.20;
 
-          button.style.translate =
-            `${dx.toFixed(1)}px ${dy.toFixed(1)}px`;
+            button.style.translate =
+              `${dx.toFixed(1)}px ${dy.toFixed(1)}px`;
 
-        }
-      );
+          }
+        );
 
-      button.addEventListener(
-        'pointerleave',
-        () => {
+        button.addEventListener(
+          'pointerleave',
+          () => {
 
-          button.style.translate='';
+            button.style.translate='';
 
-        }
-      );
+          }
+        );
 
-    });
+      }
+    );
 
 }
 
@@ -4978,7 +5270,11 @@ if(fine && !reduce){
 const heroCard =
   $('#heroCard');
 
-if(heroCard && fine && !reduce){
+if(
+  heroCard &&
+  fine &&
+  !reduce
+){
 
   heroCard.addEventListener(
     'pointermove',
@@ -4988,13 +5284,17 @@ if(heroCard && fine && !reduce){
         heroCard.getBoundingClientRect();
 
       const x =
-        (e.clientX-r.left) /
-          r.width -
+        (
+          e.clientX-r.left
+        ) /
+        r.width -
         .5;
 
       const y =
-        (e.clientY-r.top) /
-          r.height -
+        (
+          e.clientY-r.top
+        ) /
+        r.height -
         .5;
 
       heroCard.style.transform =
@@ -5035,7 +5335,8 @@ document.addEventListener(
         '[data-ripple]'
       );
 
-    if(!t) return;
+    if(!t)
+      return;
 
     const r =
       t.getBoundingClientRect();
@@ -5047,7 +5348,9 @@ document.addEventListener(
       )*2.4;
 
     const s =
-      document.createElement('span');
+      document.createElement(
+        'span'
+      );
 
     s.className='ripple';
 
@@ -5119,10 +5422,15 @@ function renderDots(){
 
       btn.className =
         `dot-btn ${
-          i === activeIdx
+          i===activeIdx
             ? 'active'
             : ''
         }`;
+
+      btn.setAttribute(
+        'aria-label',
+        `Go to project ${i+1}`
+      );
 
       btn.addEventListener(
         'click',
@@ -5152,39 +5460,55 @@ function updateCarousel(){
   if(!visible.length)
     return;
 
-  if(activeIdx >= visible.length)
+  if(
+    activeIdx >=
+    visible.length
+  ){
+
     activeIdx=0;
 
-  if(activeIdx < 0)
-    activeIdx=visible.length-1;
+  }
 
-  cards.forEach(c => {
+  if(
+    activeIdx < 0
+  ){
 
-    c.className =
-      'carousel-card hidden-left';
+    activeIdx=
+      visible.length-1;
 
-    c.onclick=null;
+  }
 
-  });
+  cards.forEach(
+    c => {
+
+      c.className =
+        'carousel-card hidden-left';
+
+      c.onclick=null;
+
+    }
+  );
 
   visible.forEach(
     (card,i) => {
 
-      if(i === activeIdx){
+      if(
+        i === activeIdx
+      ){
 
         card.className =
           'carousel-card active';
 
         card.onclick =
-          () => lbOpen(card);
+          () =>
+            lbOpen(card);
 
       }
 
       else if(
         i ===
         (
-          activeIdx -
-          1 +
+          activeIdx-1+
           visible.length
         ) %
         visible.length
@@ -5226,7 +5550,9 @@ function updateCarousel(){
 
       }
 
-      else if(i < activeIdx){
+      else if(
+        i<activeIdx
+      ){
 
         card.className =
           'carousel-card hidden-left';
@@ -5270,10 +5596,13 @@ nextBtn.addEventListener(
 );
 
 /* =====================================================
-   SEG CONTROLS
+   SEGMENTED CONTROLS
 ===================================================== */
 
-function initSeg(root,onChange){
+function initSeg(
+  root,
+  onChange
+){
 
   const btns =
     $$('.seg-btn',root);
@@ -5287,7 +5616,8 @@ function initSeg(root,onChange){
       const b =
         $('.seg-btn.active',root);
 
-      if(!b) return;
+      if(!b)
+        return;
 
       thumb.style.width =
         b.offsetWidth+'px';
@@ -5307,23 +5637,27 @@ function initSeg(root,onChange){
         () => {
 
           if(
-            b.classList.contains('active')
+            b.classList.contains(
+              'active'
+            )
           )
             return;
 
-          btns.forEach(x => {
+          btns.forEach(
+            x => {
 
-            x.classList.toggle(
-              'active',
-              x === b
-            );
+              x.classList.toggle(
+                'active',
+                x === b
+              );
 
-            x.setAttribute(
-              'aria-pressed',
-              x === b
-            );
+              x.setAttribute(
+                'aria-pressed',
+                x === b
+              );
 
-          });
+            }
+          );
 
           place();
 
@@ -5377,7 +5711,7 @@ initSeg(
 updateCarousel();
 
 /* =====================================================
-   STATS
+   COUNT UP
 ===================================================== */
 
 function countUp(el){
@@ -5402,14 +5736,14 @@ function countUp(el){
       ''
     ).length;
 
-  const suf =
+  const suffix =
     el.dataset.suffix ||
     '';
 
   if(reduce){
 
     el.textContent =
-      to.toFixed(dec)+suf;
+      to.toFixed(dec)+suffix;
 
     el.dataset.counted='1';
 
@@ -5435,7 +5769,7 @@ function countUp(el){
         );
 
       const e =
-        1 -
+        1-
         Math.pow(
           1-p,
           4
@@ -5444,9 +5778,11 @@ function countUp(el){
       el.textContent =
         (
           to*e
-        ).toFixed(dec)+suf;
+        ).toFixed(dec)+suffix;
 
-      if(p < 1){
+      if(
+        p<1
+      ){
 
         requestAnimationFrame(
           tick
@@ -5456,7 +5792,7 @@ function countUp(el){
       else{
 
         el.textContent =
-          to.toFixed(dec)+suf;
+          to.toFixed(dec)+suffix;
 
         el.dataset.counted='1';
 
@@ -5467,6 +5803,10 @@ function countUp(el){
 
 }
 
+/* =====================================================
+   STATS OBSERVER
+===================================================== */
+
 const statsObserver =
   new IntersectionObserver(
     entries => {
@@ -5476,7 +5816,9 @@ const statsObserver =
       ){
 
         $$('#statsRow [data-count]')
-          .forEach(countUp);
+          .forEach(
+            countUp
+          );
 
         statsObserver.disconnect();
 
@@ -5493,12 +5835,15 @@ statsObserver.observe(
 );
 
 /* =====================================================
-   SERVICE TABS
+   SERVICES
 ===================================================== */
 
 const servicePanels = {
-  gfx:$('#gfx'),
-  art2d:$('#art2d')
+  gfx:
+    $('#gfx'),
+
+  art2d:
+    $('#art2d')
 };
 
 function runCounts(panel){
@@ -5506,7 +5851,9 @@ function runCounts(panel){
   $$(
     '[data-count]',
     panel
-  ).forEach(countUp);
+  ).forEach(
+    countUp
+  );
 
 }
 
@@ -5514,15 +5861,17 @@ initSeg(
   $('#serviceTabs'),
   key => {
 
-    Object.entries(servicePanels)
-      .forEach(
-        ([id,p]) => {
+    Object.entries(
+      servicePanels
+    )
+    .forEach(
+      ([id,p]) => {
 
-          p.hidden =
-            id !== key;
+        p.hidden =
+          id !== key;
 
-        }
-      );
+      }
+    );
 
     const p =
       servicePanels[key];
@@ -5532,10 +5881,8 @@ initSeg(
         (card,i) => {
 
           card.classList.remove(
-            'pop'
+            'count-done'
           );
-
-          void card.offsetWidth;
 
           card.style.setProperty(
             '--i',
@@ -5616,10 +5963,13 @@ function lbOpen(card){
 
   requestAnimationFrame(
     () =>
-      lb.classList.add('open')
+      lb.classList.add(
+        'open'
+      )
   );
 
-  document.documentElement.style.overflow='hidden';
+  document.documentElement.style.overflow =
+    'hidden';
 
 }
 
@@ -5629,13 +5979,16 @@ function lbClose(){
     'open'
   );
 
-  document.documentElement.style.overflow='';
+  document.documentElement.style.overflow =
+    '';
 
   setTimeout(
     () => {
 
       if(
-        !lb.classList.contains('open')
+        !lb.classList.contains(
+          'open'
+        )
       ){
 
         lb.hidden=true;
@@ -5648,14 +6001,17 @@ function lbClose(){
 
 }
 
-$$('[data-close]',lb)
-  .forEach(
-    b =>
-      b.addEventListener(
-        'click',
-        lbClose
-      )
-  );
+$$(
+  '[data-close]',
+  lb
+)
+.forEach(
+  b =>
+    b.addEventListener(
+      'click',
+      lbClose
+    )
+);
 
 document.addEventListener(
   'keydown',
@@ -5717,7 +6073,6 @@ async function copyText(text){
     return true;
 
   }
-
   catch(_){
 
     try{
@@ -5751,7 +6106,6 @@ async function copyText(text){
       return ok;
 
     }
-
     catch(__){
 
       return false;
@@ -5780,8 +6134,8 @@ $('#copyDiscord')
 
       toast(
         ok
-          ? 'Discord copiado: rekillx'
-          : 'Copie manualmente: rekillx'
+          ? 'Discord username copied: rekillx'
+          : 'Please copy manually: rekillx'
       );
 
       if(ok){
@@ -5790,7 +6144,7 @@ $('#copyDiscord')
           'done'
         );
 
-        label.textContent=
+        label.textContent =
           'Copied!';
 
         setTimeout(
@@ -5800,8 +6154,8 @@ $('#copyDiscord')
               'done'
             );
 
-            label.textContent=
-              'Copy username';
+            label.textContent =
+              'Copy Username';
 
           },
           1800
@@ -5813,7 +6167,7 @@ $('#copyDiscord')
   );
 
 /* =====================================================
-   SCROLL SPY
+   NAV / SCROLL SPY
 ===================================================== */
 
 const nav =
@@ -5828,11 +6182,11 @@ const navSecs =
       $(a.getAttribute('href'))
   );
 
-let ticking=false;
+let scrollTicking=false;
 
 function updateScroll(){
 
-  ticking=false;
+  scrollTicking=false;
 
   const y =
     scrollY;
@@ -5842,7 +6196,7 @@ function updateScroll(){
 
   nav.classList.toggle(
     'scrolled',
-    y > 30
+    y>30
   );
 
   let cur=-1;
@@ -5852,8 +6206,9 @@ function updateScroll(){
 
       if(
         s &&
-        s.getBoundingClientRect().top <=
-          vh*.4
+        s.getBoundingClientRect()
+          .top <=
+        vh*.4
       ){
 
         cur=i;
@@ -5867,7 +6222,7 @@ function updateScroll(){
     (a,i) =>
       a.classList.toggle(
         'active',
-        i === cur
+        i===cur
       )
   );
 
@@ -5875,9 +6230,9 @@ function updateScroll(){
 
 function onScroll(){
 
-  if(!ticking){
+  if(!scrollTicking){
 
-    ticking=true;
+    scrollTicking=true;
 
     requestAnimationFrame(
       updateScroll
@@ -5903,7 +6258,7 @@ addEventListener(
 updateScroll();
 
 /* =====================================================
-   ABOUT SCRUB
+   SCRUB TEXT
 ===================================================== */
 
 const scrubEl =
@@ -5912,7 +6267,11 @@ const scrubEl =
 const sw =
   $$('.sw');
 
+let scrubTicking=false;
+
 function updateScrub(){
+
+  scrubTicking=false;
 
   if(
     !scrubEl ||
@@ -5946,13 +6305,13 @@ function updateScrub(){
     (s,i) => {
 
       const opacity =
-        .16 +
-        .84 *
+        .16+
+        .84*
         clamp(
           p*(n+3)-i,
           0,
           3
-        ) /
+        )/
         3;
 
       s.style.opacity =
@@ -5963,10 +6322,37 @@ function updateScrub(){
 
 }
 
+function scheduleScrub(){
+
+  if(!scrubTicking){
+
+    scrubTicking=true;
+
+    requestAnimationFrame(
+      updateScrub
+    );
+
+  }
+
+}
+
+addEventListener(
+  'scroll',
+  scheduleScrub,
+  {
+    passive:true
+  }
+);
+
+addEventListener(
+  'resize',
+  scheduleScrub
+);
+
+updateScrub();
+
 /* =====================================================
-   CLICK FX
-   SECOND SITE SYSTEM
-   ADAPTED FOR CYAN FIRST SITE
+   JUICY CLICK FX
 ===================================================== */
 
 (() => {
@@ -5994,10 +6380,10 @@ function updateScrub(){
     W=innerWidth;
     H=innerHeight;
 
-    cv.width=
+    cv.width =
       W*dpr;
 
-    cv.height=
+    cv.height =
       H*dpr;
 
     ctx.setTransform(
@@ -6039,19 +6425,13 @@ function updateScrub(){
 
   const easeOutExpo =
     t =>
-      t >= 1
+      t>=1
         ? 1
-        : 1 -
+        : 1-
           Math.pow(
             2,
             -10*t
           );
-
-  /*
-     Cyan dominates this version,
-     while retaining the richer
-     chromatic behavior from site 2.
-  */
 
   const PAL = [
 
@@ -6112,8 +6492,8 @@ function updateScrub(){
   ){
 
     if(
-      r <= 0 ||
-      a <= .002
+      r<=0 ||
+      a<=.002
     )
       return;
 
@@ -6123,7 +6503,8 @@ function updateScrub(){
         ${a.toFixed(3)}
       )`;
 
-    ctx.lineWidth=lw;
+    ctx.lineWidth =
+      lw;
 
     ctx.beginPath();
 
@@ -6163,7 +6544,7 @@ function updateScrub(){
 
     });
 
-    /* Main shockwave */
+    /* Main ring */
 
     rings.push({
 
@@ -6190,7 +6571,7 @@ function updateScrub(){
 
     });
 
-    /* Secondary */
+    /* Secondary ring */
 
     rings.push({
 
@@ -6218,9 +6599,11 @@ function updateScrub(){
 
     });
 
-    /* Heavy impact */
+    /* Strong impact */
 
-    if(pw > 1.4){
+    if(
+      pw>1.4
+    ){
 
       rings.push({
 
@@ -6249,7 +6632,7 @@ function updateScrub(){
 
     if(
       !reduce &&
-      pw >= 1.45
+      pw>=1.45
     ){
 
       document.body.animate(
@@ -6269,6 +6652,7 @@ function updateScrub(){
         ],
         {
           duration:220,
+
           easing:'ease-out'
         }
       );
@@ -6341,16 +6725,17 @@ function updateScrub(){
             1.9
           ),
 
-        c:pick()
+        c:
+          pick()
 
       });
 
     }
 
-    /* Physics sparks */
+    /* Sparks */
 
     if(
-      sparks.length < 700
+      sparks.length<700
     ){
 
       const n =
@@ -6422,7 +6807,8 @@ function updateScrub(){
               2.4
             ),
 
-          c:pick()
+          c:
+            pick()
 
         });
 
@@ -6434,7 +6820,8 @@ function updateScrub(){
 
     const nsh =
       Math.round(
-        4+3*pw
+        4+
+        3*pw
       );
 
     for(
@@ -6500,7 +6887,8 @@ function updateScrub(){
 
         drag:2.4,
 
-        c:pick()
+        c:
+          pick()
 
       });
 
@@ -6535,9 +6923,7 @@ function updateScrub(){
     ctx.lineCap =
       'round';
 
-    /* =================================================
-       FLASH
-    ================================================= */
+    /* Flash */
 
     for(
       let i=flashes.length-1;
@@ -6554,7 +6940,9 @@ function updateScrub(){
         )/
         f.dur;
 
-      if(p >= 1){
+      if(
+        p>=1
+      ){
 
         flashes.splice(
           i,
@@ -6629,9 +7017,7 @@ function updateScrub(){
 
     }
 
-    /* =================================================
-       CHROMATIC RINGS
-    ================================================= */
+    /* Chromatic rings */
 
     for(
       let i=rings.length-1;
@@ -6648,10 +7034,14 @@ function updateScrub(){
         )/
         rg.dur;
 
-      if(p < 0)
+      if(
+        p<0
+      )
         continue;
 
-      if(p >= 1){
+      if(
+        p>=1
+      ){
 
         rings.splice(
           i,
@@ -6699,7 +7089,7 @@ function updateScrub(){
         lw*6
       );
 
-      /* Pink chromatic separation */
+      /* Pink separation */
 
       arc(
         rg.x,
@@ -6710,7 +7100,7 @@ function updateScrub(){
         lw
       );
 
-      /* White center */
+      /* White core */
 
       arc(
         rg.x,
@@ -6734,9 +7124,7 @@ function updateScrub(){
 
     }
 
-    /* =================================================
-       LIGHT STREAKS
-    ================================================= */
+    /* Light streaks */
 
     for(
       let i=streaks.length-1;
@@ -6753,7 +7141,9 @@ function updateScrub(){
         )/
         s.dur;
 
-      if(p >= 1){
+      if(
+        p>=1
+      ){
 
         streaks.splice(
           i,
@@ -6860,9 +7250,7 @@ function updateScrub(){
 
     }
 
-    /* =================================================
-       SPARKS
-    ================================================= */
+    /* Sparks */
 
     for(
       let i=sparks.length-1;
@@ -6879,7 +7267,9 @@ function updateScrub(){
         s.age/
         s.life;
 
-      if(p >= 1){
+      if(
+        p>=1
+      ){
 
         sparks.splice(
           i,
@@ -6962,9 +7352,7 @@ function updateScrub(){
 
     }
 
-    /* =================================================
-       GLASS SHARDS
-    ================================================= */
+    /* Glass shards */
 
     for(
       let i=shards.length-1;
@@ -6981,7 +7369,9 @@ function updateScrub(){
         s.age/
         s.life;
 
-      if(p >= 1){
+      if(
+        p>=1
+      ){
 
         shards.splice(
           i,
@@ -6998,6 +7388,7 @@ function updateScrub(){
         );
 
       s.vx*=dr;
+
       s.vy*=dr;
 
       s.x+=
@@ -7064,16 +7455,16 @@ function updateScrub(){
 
     }
 
-    /* =================================================
-       HOLD CHARGE
-    ================================================= */
+    /* Press and hold charge */
 
     if(down){
 
       const held =
         now-down.t;
 
-      if(held > 240){
+      if(
+        held>240
+      ){
 
         const p =
           clamp(
@@ -7168,14 +7559,18 @@ function updateScrub(){
         ){
 
           const a =
-            (i/12)*TAU+
+            (
+              i/12
+            )*
+            TAU+
             now*.002;
 
           const r1 =
             R+6;
 
           const r2 =
-            R+10+8*p;
+            R+10+
+            8*p;
 
           ctx.beginPath();
 
@@ -7235,9 +7630,9 @@ function updateScrub(){
 
   }
 
-  /* =================================================
+  /* =====================================================
      POINTER DOWN
-  ================================================= */
+  ===================================================== */
 
   addEventListener(
     'pointerdown',
@@ -7254,18 +7649,20 @@ function updateScrub(){
         };
 
         return;
+
       }
 
-      if(e.button !== 0)
+      if(
+        e.button!==0
+      )
         return;
 
       down={
         x:e.clientX,
         y:e.clientY,
-        t:performance.now()
+        t:
+          performance.now()
       };
-
-      /* Normal click */
 
       burst(
         e.clientX,
@@ -7279,9 +7676,9 @@ function updateScrub(){
     }
   );
 
-  /* =================================================
+  /* =====================================================
      POINTER MOVE
-  ================================================= */
+  ===================================================== */
 
   addEventListener(
     'pointermove',
@@ -7307,9 +7704,9 @@ function updateScrub(){
     }
   );
 
-  /* =================================================
+  /* =====================================================
      POINTER UP
-  ================================================= */
+  ===================================================== */
 
   addEventListener(
     'pointerup',
@@ -7325,7 +7722,7 @@ function updateScrub(){
           Math.hypot(
             e.clientX-touch.x,
             e.clientY-touch.y
-          ) < 12
+          )<12
         ){
 
           burst(
@@ -7349,15 +7746,14 @@ function updateScrub(){
         performance.now()-
         down.t;
 
-      /*
-         Stronger impact when holding.
-      */
-
-      if(held > 240){
+      if(
+        held>240
+      ){
 
         burst(
           e.clientX,
           e.clientY,
+
           1.5+
           clamp(
             (
@@ -7387,47 +7783,6 @@ function updateScrub(){
   );
 
 })();
-
-/* =====================================================
-   SCRUB UPDATE + MAIN SCROLL LOOP
-===================================================== */
-
-let scrollTicking=false;
-
-function visualScrollUpdate(){
-
-  scrollTicking=false;
-
-  updateScrub();
-
-}
-
-addEventListener(
-  'scroll',
-  () => {
-
-    if(!scrollTicking){
-
-      scrollTicking=true;
-
-      requestAnimationFrame(
-        visualScrollUpdate
-      );
-
-    }
-
-  },
-  {
-    passive:true
-  }
-);
-
-addEventListener(
-  'resize',
-  updateScrub
-);
-
-updateScrub();
 
 })();
 
