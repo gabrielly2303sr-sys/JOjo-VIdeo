@@ -2574,6 +2574,33 @@ body::before{
   color:#fff;
 }
 
+.discord-server {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,.72);
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    color .25s ease,
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.discord-server:hover {
+  color: #fff;
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.18);
+  transform: translateY(-1px);
+}
+
 .copy-btn{
   border:0;
 
@@ -4686,9 +4713,19 @@ body.cursor-on button{
             Discord
           </div>
 
-          <div class="d-user">
-            rekillx
-          </div>
+<div class="d-user">
+  rekillx
+
+  <a
+    href="https://discord.gg/ZFZd7w8P65"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="discord-server">
+
+    Join Server ↗
+
+  </a>
+</div>
 
         </div>
 
